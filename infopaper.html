@@ -21,7 +21,6 @@
 
     * {
       box-sizing: border-box;
-      margin: 0;
       padding: 0;
     }
 
@@ -119,6 +118,10 @@
       margin-bottom: 1rem;
     }
 
+    strong {
+      color: var(--text-muted);
+    }
+
     ul {
       margin-bottom: 1.5rem;
       padding-left: 1.5rem;
@@ -203,12 +206,29 @@
       "Info Paper": {
         title: "Guideline: Academic Papers",
         commonContent: `
-          <p>We require all submissions to meet professional scientific publishing standards. Please consult the Info Formatting document on WueCampus. In addition to essential formatting and citation rules, this guide provides recommendations for writing and reference software (including MS Word, LaTeX and Zotero). It also contains direct links to additional support resources, such as the University Library and the Writing Center, where you can access writing workshops and consultation services.</p>
-          <p>Independent of your specific track, your paper should allow for a clear and concise presentation of your research.</p>
+          <p>Independent of your specific track, your paper should allow for a clear and concise presentation of your research. For this reason its main objective is to trasnmit your message in a clear way, both in terms of formalities and acedemic correctness and in terms of content. This document is not designed to explain you the formalities and rules of academic writing, for that kind of information, please consult the <a href="https://leo-teaching.github.io/seminar/standards.html">Formatting Standards</a> document.</p>
 
-          <h2>Quality of literature</h2>
-          <div class="todo-box">Give some hints on how to evaluate the good quality of research papers looking at top journals, authors, citations (also depending on the year of publication). Also include some hints on how to manage literature reading (take notes, highlight sections that are particularly interesting, keep a list of all your papers (in zotero for example) </div>
-
+          <h2>Literature</h2>
+          <p>
+            Choose sources critically
+            <ul>
+          <li>Journals: Leading economics journals and established field journals are useful starting points. </li>
+          <li>Authors: Look for expertise and related publications. Reputation alone does not guarantee a convincing paper.</li>
+          <li>Citations: Consider publication year and field. Recent papers have had less time to accumulate citations; highly cited papers are influential, not necessarily correct.</li>
+          <li>Evidence: Always assess the paper’s methods, conclusions, and limitations yourself. Check whether a working paper has a newer or published version.</li>
+          </ul>
+          </p>
+          <p>Read and organize efficiently
+          <ul>
+          <li>Start with the abstract, introduction, and conclusion, then study the relevant methods, tables, and results.</li>
+          <li>Highlight selectively and take notes in your own words: question, method, findings, mechanism, limitations, and relevance to your project.</li>
+          <li>Keep a reference library, for example in Zotero, with PDFs and complete publication details.</li>
+          <li>Record page numbers for useful passages, distinguish quotations from your own ideas, and add citations while writing.</li>
+          <li>Use reference lists and “cited by” searches to find related work.</li>
+         
+          </ul>
+           <strong>Prioritize a focused set of papers you understand well over a long list of loosely related references. Remember: you are responsible for your citations and you are expected to be proficient in each paper you mention.</strong>
+          </p>
           <h2>Helpful Resources</h2>
           <h3>Writing and Research</h3>
           <ul>
@@ -221,23 +241,74 @@
             <li><a href="https://www.zotero.org/" target="_blank">Zotero</a>: A free, easy-to-use tool to help you collect, organize, annotate, cite, and share research.</li>
           </ul>
 
-          <div class="callout">
-            <div class="callout-title">💡 Hint on Strategy</div>
-            <p>A paper draft should never be treated as a simple deadline to fulfill just to make your supervisor happy. Instead, look at it as a strategic opportunity to receive critical feedback on your research approach and structure. The more complete and polished your draft is, the more actionable the feedback will be... Maintain a single master document from day one that mirrors the final structure of your paper.</p>
-          </div>
+          
         `,
         trackContent: {
           "BT": `
             <h2>Bachelor Thesis Guidelines</h2>
-            <p>Your Bachelor Thesis should demonstrate your ability to conduct independent research and present your findings in a structured and coherent manner.</p>
+            <p>Your Bachelor Thesis should demonstrate your ability to conduct independent research and present your findings in a structured and coherent manner. </p>
             
-            <h3 id="bt_ext_paper_coll_data">Second Paper Draft</h3>
-            <div class="todo-box">Include specific requirements for the second paper draft here, e.g., expected length, content, and structure.</div>
+            <h3 id="bt_ext_paper_coll_data"> Paper Draft</h3>
+            <p>Submit a preliminary version of your final thesis, following its intended structure and including all work completed so far: motivation, relevant literature, research question, hypotheses, experimental design, data collection, and empirical strategy.
+            The draft should be sufficiently developed to receive feedback on your argument, methods, and findings. Clearly identify unfinished sections, remaining analyses, and specific questions for feedback.
+            </p>
+
+            <div class="callout">
+            <div class="callout-title">💡 Hint on Strategy</div>
+            <p>A paper draft should never be treated as a simple deadline to fulfill just to make your supervisor happy. Instead, look at it as a strategic opportunity to receive critical feedback on your research approach and structure. The more complete and polished your draft is, the more actionable the feedback will be. Maintain a single master document from day one that mirrors the final structure of your paper and share that "work-in-progress" docuemnt when asked for a Paper Draft.</p>
+          </div>
             
             <h3 id="bt_submission">Final Paper</h3>
-            <p>Your paper should be a maximum of 25 pages long, including the title page, abstract, table of contents, main text, tables, figures, references, and appendices. Only AI-related declarations and the Versicherung zur selbstständigen Leistungserbringung are excluded from this count.</p>
-            <div class="todo-box">Include specific requirements for the final paper here, e.g., content, and structure. Specify whether we want table of contents, abstract, page allocations per section, and examples.</div>
-            <p>For candidates who wrote a prior seminar paper on the thesis topic, the opening chapters of the thesis must not simply replicate or copy-paste that seminar work. Introductory and literature chapters must contain only information directly useful or interesting for the specific thesis question.</p>
+            <p>Your paper should be a maximum of 25 pages long, including the title page, abstract, table of contents, main text, tables, figures, references, and appendices. Only AI-related declarations and the <a class="custom-link" style="color: #2b6cb0;" href="https://www.uni-wuerzburg.de/fileadmin/33120300/Pruefungsamt/Formulare/Allgemeine_Formulare/Versicherung_zur_Leistungserbringung/20231127_Versicherung_zur_selbststaendigen_Leistungserbringung.pdf">Versicherung zur selbstständigen Leistungserbringung </a> are excluded from this count.</p>
+            
+            <h3 id="bt_submission">Structure</h3>
+            <div>
+              <h4>Abstract</h4>
+              <h4>1. Introduction (Approx. 2-3 Pages)</h4>
+              <ul>
+                  <li><strong>Motivation & Relevance:</strong> Introduce the economic or real-world problem and explain why the topic is important.</li>
+                  <li><strong>Research Question:</strong> Formulate the precise, focused question your thesis aims to answer.</li>
+                  <li><strong>Methodological Approach:</strong> Briefly outline how you collect data and analyze the problem.</li>
+                  <li><strong>Thesis Structure:</strong> Provide a roadmap of the subsequent chapters.</li>
+              </ul>
+
+              <h4>2. Theoretical Background & Literature Review (Approx. 4-5 Pages)</h4>
+              <ul>
+                  <li><strong>State of Research:</strong> Review the existing academic literature and theories relevant to your independent topic.</li>
+                  <li><strong>Conceptual Framework:</strong> Define key terms and establish the theoretical mechanisms at play.</li>
+                  <li><strong>Hypothesis Development:</strong> Formulate clear, testable hypotheses derived from theory and prior empirical work.</li>
+              </ul>
+              <p>For candidates who wrote a prior seminar paper on the thesis topic, the opening chapters of the thesis must not simply replicate or copy-paste that seminar work. Introductory and literature chapters must contain only information directly useful or interesting for the specific thesis question.</p>
+
+              <h4>3. Data & Methodology (Approx. 4-5 Pages)</h4>
+              <ul>
+                  <li><strong>Data Collection Strategy:</strong> Describe how the data was gathered (e.g., primary survey, experiment, or secondary dataset acquisition).</li>
+                  <li><strong>Sample & Descriptive Statistics:</strong> Detail sample size, cleaning procedures, and summary statistics.</li>
+                  <li><strong>Empirical Strategy:</strong> Explain your econometric model, estimation techniques, and how variables are operationalized.</li>
+              </ul>
+
+              <h4>4. Empirical Results & Analysis (Approx. 4-5 Pages)</h4>
+              <ul>
+                  <li><strong>Main Findings:</strong> Present your regression or analytical results using properly numbered and captioned tables and figures.</li>
+                  <li><strong>Economic Interpretation:</strong> Explain what the statistical coefficients and tests mean in substantive terms.</li>
+                  <li><strong>Robustness Checks:</strong> Test the sensitivity of your findings with alternative specifications or sub-sample analyses.</li>
+              </ul>
+
+              <h4>5. Discussion & Limitations (Approx. 2-3 Pages)</h4>
+              <ul>
+                  <li><strong>Contextualization:</strong> Compare your findings with existing literature and economic theory.</li>
+                  <li><strong>Implications:</strong> Discuss practical, managerial, or policy implications of your results.</li>
+                  <li><strong>Limitations:</strong> Transparently address methodological constraints, potential biases, and external validity.</li>
+              </ul>
+
+              <h4>6. Conclusion (Approx. 1 Page)</h4>
+              <ul>
+                  <li><strong>Summary of Findings:</strong> Recap the core research question, empirical approach, and main takeaway.</li>
+                  <li><strong>Future Research:</strong> Highlight open questions and areas for subsequent investigation.</li>
+              </ul>
+          </div>
+
+            
           `,
           "MS": `
             <h2>Master Seminar Guidelines</h2>
@@ -250,17 +321,58 @@
           `,
           "BS": `
             <h2>Bachelor Seminar Guidelines</h2>
-            <p>Your Bachelor Seminar paper introduces you to academic writing fundamentals and should demonstrate your ability to conduct independent research and present your findings in a structured and coherent manner. The expected length is between 10-15 pages, including all appendixes, titles, abstract, references.</p>
+            <p>Your Bachelor Seminar paper introduces you to academic writing fundamentals and should demonstrate your ability to conduct independent research and present your findings in a structured and coherent manner.</p>
             <div class="todo-box">Include specific requirements for the paper here, e.g., structure, page budgets, table of contents, and abstract expectations.</div>
             
             <h3 id="bs_submission">Core Elements Required</h3>
+            <p>When revising your paper, make sure that it includes all these core elements:</p>
             <ul>
               <li>Motivation of the research question.</li>
               <li>Thorough discussion of the baseline paper.</li>
               <li>Thorough discussion of alternative theoretical/behavioral mechanisms.</li>
-              <li>A proposal of a policy intervention and an idea on how to validate the suggested mechanism/intervention with an experiment.</li>
+              <li>A proposal of a experimental intervention to validate the suggested mechanism.</li>
             </ul>
             <p>Your paper should be a maximum of 15 pages long, including the title page, table of contents, main text, tables, figures, references, and appendices. Only AI-related declarations and the Versicherung zur selbstständigen Leistungserbringung are excluded from this count.</p>
+
+           <!-- <h3>Bachelor Seminar Paper Structure</h3>
+                <div>
+                <p><em>Note: An abstract is not required for this 15-page format. Start directly with the introduction on page 1.</em></p>
+
+                <h4>1. Introduction (Approx. 2 Pages)</h4>
+                <ul>
+                    <li><strong>Motivation & Context:</strong> Introduce the real-world economic puzzle or problem.</li>
+                    <li><strong>The Base Paper:</strong> Briefly state the foundational study being analyzed, its primary question, and its core findings.</li>
+                    <li><strong>The Research Gap:</strong> Explain why the existing mechanism leaves open questions or why an alternative mechanism is plausible.</li>
+                    <li><strong>Roadmap:</strong> Outline the structure of your paper.</li>
+                </ul>
+
+                <h4>2. Literature Review & Base Paper Analysis (Approx. 3–4 Pages)</h4>
+                <ul>
+                    <li><strong>Contextualization:</strong> Position the base paper within the broader economic or behavioral literature.</li>
+                    <li><strong>Methodology & Data:</strong> Detailed breakdown of the base paper's empirical strategy, data, and identification.</li>
+                    <li><strong>Original Mechanism:</strong> Critical evaluation of how the authors claim their results occur.</li>
+                </ul>
+
+                <h4>3. Critique & Proposed New Mechanism (Approx. 3–4 Pages)</h4>
+                <ul>
+                    <li><strong>Limitations of Current Explanations:</strong> Highlight where the original mechanism faces confounding factors or gaps.</li>
+                    <li><strong>The Alternative Hypothesis:</strong> Formulate your clear, testable new mechanism and define the theoretical rationale explaining why this new channel matters.</li>
+                </ul>
+
+                <h4>4. Proposed Experimental Design (Approx. 4–5 Pages)</h4>
+                <ul>
+                    <li><strong>Research Design:</strong> Outline how you will test your proposed mechanism (e.g., lab, online survey, or field experiment).</li>
+                    <li><strong>Treatments & Randomization:</strong> Detail the treatment arms, control groups, and how you isolate your specific mechanism.</li>
+                    <li><strong>Data, Sample, & Expected Patterns:</strong> Describe your target sample, data collection strategy, and the statistical patterns that would confirm your hypothesis.</li>
+                </ul>
+
+                <h4>5. Conclusion & Discussion (Approx. 1–2 Pages)</h4>
+                <ul>
+                    <li><strong>Summary of Contribution:</strong> Reiterate what your proposed mechanism adds to the literature.</li>
+                    <li><strong>Broader Implications:</strong> Discuss potential policy or management takeaways.</li>
+                    <li><strong>Feasibility & Limitations:</strong> Acknowledge practical challenges or boundary conditions of your proposed design.</li>
+                </ul>
+                </div> -->
 
           `
         }
