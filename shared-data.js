@@ -42,7 +42,7 @@ const SHARED_TIMELINE_DATA = [
   {
     "ID": "bt_emp_intro",
     "MilestoneName": "Intro Methods",
-    "TargetDate": "21-10-2026",
+    "TargetDate": "22-10-2026",
     "Groups": "BT",
     "RefDoc": "",
     "description": "Recap Session: Empirical methods and Academic writing and reading guidelines",
@@ -52,7 +52,7 @@ const SHARED_TIMELINE_DATA = [
   {
     "ID": "ms_emp_intro",
     "MilestoneName": "Intro Methods",
-    "TargetDate": "21-10-2026",
+    "TargetDate": "22-10-2026",
     "Groups": "MS",
     "RefDoc": "",
     "description": "Recap Session: Empirical methods and Academic writing and reading guidelines",
@@ -62,7 +62,7 @@ const SHARED_TIMELINE_DATA = [
   {
     "ID": "bs_emp_intro",
     "MilestoneName": "Intro Methods",
-    "TargetDate": "21-10-2026",
+    "TargetDate": "22-10-2026",
     "Groups": "BS",
     "RefDoc": "",
     "description": "Recap Session: Empirical methods and Academic writing and reading guidelines",
