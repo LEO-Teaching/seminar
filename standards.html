@@ -201,11 +201,10 @@
 
       // Document links mapping (replace with your actual URLs/PDFs)
     const documentLinks = {
-        'BS': 'https://github.com/leo-teaching/seminar/blob/main/Cover_Template/Cover_Template_BS.pdf',
-        'BT': 'https://github.com/leo-teaching/seminar/blob/main/Cover_Template/Cover_Template_BT.pdf',
-        'MS': 'https://github.com/leo-teaching/seminar/blob/main/Cover_Template/Cover_Template_MS.pdf'
-    };
-
+        'BS': 'https://raw.githubusercontent.com/leo-teaching/seminar/main/Cover_Template/Cover_Template_BS.pdf',
+        'BT': 'https://raw.githubusercontent.com/leo-teaching/seminar/main/Cover_Template/Cover_Template_BT.pdf',
+        'MS': 'https://raw.githubusercontent.com/leo-teaching/seminar/main/Cover_Template/Cover_Template_MS.pdf'
+      };
     // Check if the user originally had a track in the URL or localStorage
     const hasUrlTrack = urlParams.has('group');
     const hasLocalTrack = !!localStorage.getItem('student_track');
