@@ -213,10 +213,10 @@ const SHARED_TIMELINE_DATA = [
     "ID": "ms_coll_data",
     "MilestoneName": "Collected data submission",
     "TargetDate": "09-01-2027",
-    "Groups": "BT",
+    "Groups": "MS",
     "RefDoc": "Project Guidelines",
     "description": "Raw collected data submitted via WueCampus. Only for students carrying out an own contribution project.",
-    "block": "4.0",
+    "block": "2.0",
     "syllabus": "false"
   },
   {
