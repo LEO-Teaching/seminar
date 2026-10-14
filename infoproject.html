@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <link rel="stylesheet" href="style.css">
   <meta charset="UTF-8">
@@ -19,8 +20,12 @@
       --todo-color: #f59e0b;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
       font-family: system-ui, -apple-system, sans-serif;
       background: var(--bg);
@@ -32,7 +37,10 @@
       padding: 2.5rem 1rem;
     }
 
-    .container { max-width: 850px; width: 100%; }
+    .container {
+      max-width: 850px;
+      width: 100%;
+    }
 
     .header-bar {
       display: flex;
@@ -56,7 +64,11 @@
       font-size: 0.9rem;
       transition: 0.2s;
     }
-    .back-hub-btn:hover { color: var(--text); border-color: var(--text-muted); }
+
+    .back-hub-btn:hover {
+      color: var(--text);
+      border-color: var(--text-muted);
+    }
 
     .doc-content {
       background: var(--card-bg);
@@ -83,15 +95,49 @@
       font-weight: 600;
     }
 
-    h2 { font-size: 1.3rem; color: #cbd5e1; margin-top: 2rem; margin-bottom: 0.75rem; border-bottom: 1px solid var(--border); padding-bottom: 0.4rem; }
-    h3 { font-size: 1.1rem; color: #93c5fd; margin-top: 1.5rem; margin-bottom: 0.5rem; }
-    
-    p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1rem; }
-    
-    ul { margin-bottom: 1.5rem; padding-left: 1.5rem; color: var(--text-muted); }
-    li { margin-bottom: 0.5rem; line-height: 1.5; font-size: 0.95rem; }
-    li a { color: #60a5fa; text-decoration: none; }
-    li a:hover { text-decoration: underline; }
+    h2 {
+      font-size: 1.3rem;
+      color: #cbd5e1;
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.4rem;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      color: #93c5fd;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    ul {
+      margin-bottom: 1.5rem;
+      padding-left: 1.5rem;
+      color: var(--text-muted);
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      line-height: 1.5;
+      font-size: 0.95rem;
+    }
+
+    li a {
+      color: #60a5fa;
+      text-decoration: none;
+    }
+
+    li a:hover {
+      text-decoration: underline;
+    }
 
     .todo-box {
       background: rgba(245, 158, 11, 0.1);
@@ -111,16 +157,28 @@
       border-radius: 0 8px 8px 0;
       margin: 1.5rem 0;
     }
-    .callout-title { font-weight: 700; color: #93c5fd; margin-bottom: 0.4rem; font-size: 0.95rem; }
-    .callout p { margin-bottom: 0; color: #e2e8f0; }
+
+    .callout-title {
+      font-weight: 700;
+      color: #93c5fd;
+      margin-bottom: 0.4rem;
+      font-size: 0.95rem;
+    }
+
+    .callout p {
+      margin-bottom: 0;
+      color: #e2e8f0;
+    }
   </style>
 </head>
+
 <body>
 
   <div class="container">
     <div class="header-bar">
       <div>
-        <span style="font-size: 0.8rem; color: var(--primary); font-weight: 700; text-transform: uppercase;">Official Project Guideline</span>
+        <span style="font-size: 0.8rem; color: var(--primary); font-weight: 700; text-transform: uppercase;">Official
+          Project Guideline</span>
       </div>
       <div class="track-selector"></div>
       <a id="back-link" href="index.html" class="back-hub-btn">← Back to Hub</a>
@@ -277,32 +335,32 @@
       }
     };
 
+const validTracks = ['BS', 'BT', 'MS'];
 
+window.addEventListener('DOMContentLoaded', () => {
+      const activeTrack = getActiveTrack();
+      if (!activeTrack) return; // Safeguard in case modal is active
 
-    window.addEventListener('DOMContentLoaded', () => {
-      const urlParams = new URLSearchParams(window.location.search);
-      let groupParam = urlParams.get('group');
-
-      if (!groupParam || !['BS', 'BT', 'MS'].includes(groupParam.toUpperCase())) {
-        groupParam = localStorage.getItem('student_track') || 'BS';
-      } else {
-        groupParam = groupParam.toUpperCase();
+      const backLink = document.getElementById('back-link');
+      if (backLink) {
+        backLink.href = `index.html?group=${activeTrack}`;
       }
-
-      document.getElementById('back-link').href = `index.html?group=${groupParam}`;
 
       const docData = DOCUMENTS_DATA["Info Project"];
       let renderedHTML = `
         <h1 class="doc-title">${docData.title}</h1>
-        <div class="subtitle-track">Active Profile: ${groupParam} Track &bull; Project Details</div>
+        <div class="subtitle-track">Active Profile: ${activeTrack} Track &bull; Project Details</div>
         ${docData.commonContent}
       `;
 
-      if (docData.trackContent && docData.trackContent[groupParam]) {
-        renderedHTML += docData.trackContent[groupParam];
+      if (docData.trackContent && docData.trackContent[activeTrack]) {
+        renderedHTML += docData.trackContent[activeTrack];
       }
 
-      document.getElementById('document-body').innerHTML = renderedHTML;
+      const docBody = document.getElementById('document-body');
+      if (docBody) {
+        docBody.innerHTML = renderedHTML;
+      }
 
       // Dynamically populate methodology list from references.js
       const methodologyKeys = ['haaland2023designing', 'stantcheva2023run'];
@@ -320,4 +378,5 @@
     });
   </script>
 </body>
+
 </html>

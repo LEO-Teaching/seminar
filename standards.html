@@ -14,7 +14,7 @@
       --border: #334155;
       --primary: #3b82f6;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; }
     body {
       font-family: system-ui, -apple-system, sans-serif;
       background: var(--bg);
@@ -70,7 +70,7 @@
     h2 { font-size: 1.3rem; color: #cbd5e1; margin-top: 2rem; margin-bottom: 0.75rem; border-bottom: 1px solid var(--border); padding-bottom: 0.4rem; }
     h3 { font-size: 1.1rem; color: #93c5fd; margin-top: 1.5rem; margin-bottom: 0.5rem; }
     p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1rem; }
-    ul, ol { margin-bottom: 1.5rem; padding-left: 1.5rem; color: var(--text-muted); }
+    ul, ol { margin-bottom: 1.5rem; padding-left: 1.5rem; color: var(--text-muted); margin-top: 0.5rem; }
     li { margin-bottom: 0.75rem; line-height: 1.5; font-size: 0.95rem; }
     .reference-item { margin-bottom: 1rem; padding-left: 1.5rem; text-indent: -1.5rem; color: var(--text-muted); font-size: 0.9rem; line-height: 1.5; }
   </style>
@@ -115,7 +115,7 @@
       </ul>
 
       <h2>Cover Page</h2>
-      <p>A cover page template is available on WueCampus. While alternative templates and formats are permitted, please ensure they include the essential elements specified in the provided template.</p>
+      <p>A cover page template is available <a href="#" id="open-track-modal-link">here</a> . While alternative templates and formats are permitted, please ensure they include the essential elements specified in the provided template.</p>
 
       <!-- 2. In-Text Citation Guidelines & Examples -->
       <h2>Citation Guidelines</h2>
@@ -172,6 +172,18 @@
     </div>
   </div>
 
+<div id="track-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); justify-content:center; align-items:center; z-index:9999;">
+    <div style="background:white; padding:30px; border-radius:8px; width:280px; text-align:center; font-family:sans-serif;">
+        <h3 style="margin-top:0;">Select Track</h3>
+        <div style="display:flex; flex-direction:column; gap:10px; margin:20px 0;">
+            <button class="track-select-btn" data-track="BS" style="padding:10px; cursor:pointer;">Bachelor Seminar</button>
+            <button class="track-select-btn" data-track="BT" style="padding:10px; cursor:pointer;">Bachelor Thesis</button>
+            <button class="track-select-btn" data-track="MS" style="padding:10px; cursor:pointer;">Master Seminar</button>
+        </div>
+        <a href="#" id="close-track-modal-link" style="font-size:14px; color:#666;">Close</a>
+    </div>
+</div>
+
   <script src="references.js"></script>
   <script src="resources.js"></script>
   <script src="script.js"></script>
@@ -184,8 +196,54 @@
     window.addEventListener('DOMContentLoaded', () => {
       // Handle back link track context
       const urlParams = new URLSearchParams(window.location.search);
-      let track = (urlParams.get('group') || localStorage.getItem('student_track') || 'BS').toUpperCase();
+      let track = (urlParams.get('group') || localStorage.getItem('student_track')).toUpperCase();
       document.getElementById('back-link').href = `index.html?group=${track}`;
+
+      // Document links mapping (replace with your actual URLs/PDFs)
+    const documentLinks = {
+        'BS': 'https://github.com/leo-teaching/seminar/blob/main/Cover_Template/Cover_Template_BS.pdf',
+        'BT': 'https://github.com/leo-teaching/seminar/blob/main/Cover_Template/Cover_Template_BT.pdf',
+        'MS': 'https://github.com/leo-teaching/seminar/blob/main/Cover_Template/Cover_Template_MS.pdf'
+    };
+
+    // Check if the user originally had a track in the URL or localStorage
+    const hasUrlTrack = urlParams.has('group');
+    const hasLocalTrack = !!localStorage.getItem('student_track');
+    const isTrackSelected = hasUrlTrack || hasLocalTrack;
+
+    const mainLink = document.getElementById('track-document-link');
+    const modal = document.getElementById('track-modal');
+    const closeLink = document.getElementById('close-track-modal-link');
+
+    if (mainLink) {
+        mainLink.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            // If track was NEVER selected, go straight to the document
+            if (!isTrackSelected) {
+                window.location.href = documentLinks[track];
+            } else {
+                // Otherwise, open the modal to let them change it
+                if (modal) modal.style.display = 'flex';
+            }
+        });
+    }
+
+    if (closeLink && modal) {
+        closeLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            modal.style.display = 'none';
+        });
+    }
+
+    // Modal track choice selection
+    document.querySelectorAll('.track-select-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const selectedTrack = e.target.getAttribute('data-track').toUpperCase();
+            localStorage.setItem('student_track', selectedTrack);
+            window.location.href = documentLinks[selectedTrack];
+        });
+    });
 
       // Dynamic Bibliography Generator (mirroring LaTeX nocite list)
       const nociteKeys = [

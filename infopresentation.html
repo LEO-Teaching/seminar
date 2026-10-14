@@ -219,29 +219,43 @@
     };
 
     window.addEventListener('DOMContentLoaded', () => {
-      const urlParams = new URLSearchParams(window.location.search);
-      let groupParam = urlParams.get('group');
+      const activeTrack = getActiveTrack();
+      if (!activeTrack) return; // If no track, script.js handles the modal and halts here
 
-      if (!groupParam || !['BS', 'BT', 'MS'].includes(groupParam.toUpperCase())) {
-        groupParam = localStorage.getItem('student_track') || 'BS';
-      } else {
-        groupParam = groupParam.toUpperCase();
+      const backLink = document.getElementById('back-link');
+      if (backLink) {
+        backLink.href = `index.html?group=${activeTrack}`;
       }
-
-      document.getElementById('back-link').href = `index.html?group=${groupParam}`;
 
       const docData = DOCUMENTS_DATA["Info Presentation"];
       let renderedHTML = `
         <h1 class="doc-title">${docData.title}</h1>
-        <div class="subtitle-track">Active Profile: ${groupParam} Track &bull; Presentation Guide</div>
+        <div class="subtitle-track">Active Profile: ${activeTrack} Track &bull; Presentation Guide</div>
         ${docData.commonContent}
       `;
 
-      if (docData.trackContent && docData.trackContent[groupParam]) {
-        renderedHTML += docData.trackContent[groupParam];
+      if (docData.trackContent && docData.trackContent[activeTrack]) {
+        renderedHTML += docData.trackContent[activeTrack];
       }
 
       document.getElementById('document-body').innerHTML = renderedHTML;
+      console.log("1. Current URL Hash:", window.location.hash);
+
+      if (window.location.hash) {
+        setTimeout(() => {
+          const targetElement = document.querySelector(window.location.hash);
+          console.log("2. Target Element Found:", targetElement);
+
+          if (targetElement) {
+            console.log("3. Scrolling now...");
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+          } else {
+            console.warn("⚠️ Hash exists, but NO element with this ID exists in the rendered HTML!");
+          }
+        }, 150);
+      } else {
+        console.log("⚠️ No hash found in the URL.");
+      }
     });
   </script>
 </body>

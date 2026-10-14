@@ -439,6 +439,7 @@
 
     window.addEventListener('DOMContentLoaded', () => {
       const activeTrack = getActiveTrack();
+      if (!activeTrack) return;
       renderPage(activeTrack);
     });
 

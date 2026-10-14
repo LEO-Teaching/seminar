@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  
+
 <head>
   <link rel="stylesheet" href="style.css">
   <meta charset="UTF-8">
@@ -197,6 +197,7 @@
   </div>
 
   <script src="resources.js"></script>
+  <script src="script.js"></script>
 
 
   <script>
@@ -380,39 +381,33 @@
     };
 
     window.addEventListener('DOMContentLoaded', () => {
-      const urlParams = new URLSearchParams(window.location.search);
-      let docName = urlParams.get('doc') || 'Info Paper';
-      let groupParam = urlParams.get('group');
+      const activeTrack = getActiveTrack();
+      if (!activeTrack) return; // If no track, script.js handles the modal and halts here
 
-      // Fallback group resolution
-      if (!groupParam || !['BS', 'BT', 'MS'].includes(groupParam.toUpperCase())) {
-        groupParam = localStorage.getItem('student_track') || 'BS';
-      } else {
-        groupParam = groupParam.toUpperCase();
+      const backLink = document.getElementById('back-link');
+      if (backLink) {
+        backLink.href = `index.html?group=${activeTrack}`;
       }
 
-      // Update back link to preserve track context back to hub
-      document.getElementById('back-link').href = `index.html?group=${groupParam}`;
-
-      // Render requested document or default to Info Paper
-      const docData = DOCUMENTS_DATA[docName] || DOCUMENTS_DATA["Info Paper"];
+      const docName = "Info Paper";
+      const docData = DOCUMENTS_DATA[docName];
 
       let renderedHTML = `
-    <h1 class="doc-title">${docData.title}</h1>
-    <div class="subtitle-track">Active Profile: ${groupParam} Track &bull; ${docName}</div>
-    ${docData.commonContent}
-  `;
+        <h1 class="doc-title">${docData.title}</h1>
+        <div class="subtitle-track">Active Profile: ${activeTrack} Track &bull; ${docName}</div>
+        ${docData.commonContent}
+      `;
 
-      if (docData.trackContent && docData.trackContent[groupParam]) {
-        renderedHTML += docData.trackContent[groupParam];
+      if (docData.trackContent && docData.trackContent[activeTrack]) {
+        renderedHTML += docData.trackContent[activeTrack];
       }
 
-      document.getElementById('document-body').innerHTML = renderedHTML;
+      const docBody = document.getElementById('document-body');
+      if (docBody) {
+        docBody.innerHTML = renderedHTML;
+      }
 
-      // --- ADD THIS BLOCK HERE ---
-      document.getElementById('document-body').innerHTML = renderedHTML;
-
-      // --- DEBUGGING CONSOLE LOGS ---
+      // --- Hash scrolling logic ---
       console.log("1. Current URL Hash:", window.location.hash);
 
       if (window.location.hash) {
@@ -430,10 +425,9 @@
       } else {
         console.log("⚠️ No hash found in the URL.");
       }
-      // ---------------------------
     });
   </script>
-  <script src="script.js"></script>
+
 </body>
 
 </html>

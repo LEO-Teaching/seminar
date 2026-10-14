@@ -3,7 +3,7 @@
 
 <head>
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/png" href="/mortarboard.png"/>
+  <link rel="icon" type="image/png" href="https://leo-teaching.github.io/seminar/mortarboard.png"/>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Student Hub & Resource Portal</title>
@@ -195,20 +195,40 @@
   <script src="resources.js"></script>
   <script src="script.js"></script>
   <script>
-    let currentTrack = 'BS';
+  
 
     window.addEventListener('DOMContentLoaded', () => {
       const urlParams = new URLSearchParams(window.location.search);
       let groupParam = urlParams.get('group');
+      let storedTrack = localStorage.getItem('student_track');
 
-      if (!groupParam || !['BS', 'BT', 'MS'].includes(groupParam.toUpperCase())) {
-        currentTrack = localStorage.getItem('student_track') || 'BS';
-      } else {
-        currentTrack = groupParam.toUpperCase();
+      // Check if URL or localStorage has a valid track
+      const validTracks = ['BS', 'BT', 'MS'];
+      let activeTrack = null;
+
+      if (groupParam && validTracks.includes(groupParam.toUpperCase())) {
+        activeTrack = groupParam.toUpperCase();
+      } else if (storedTrack && validTracks.includes(storedTrack.toUpperCase())) {
+        activeTrack = storedTrack.toUpperCase();
       }
 
-      switchTrack(currentTrack, false);
+      // NO FALLBACK: If no valid track is found anywhere, open the selection modal
+      if (!activeTrack) {
+        document.getElementById('global-track-modal').style.display = 'flex';
+      } else {
+        switchTrack(activeTrack, false);
+      }
     });
+
+    // Function triggered when user clicks a track inside the forced modal
+    function selectAndCloseModal(track) {
+      localStorage.setItem('student_track', track);
+      document.getElementById('global-track-modal').style.display = 'none';
+      
+      // Update URL and reload/switch track
+      const newUrl = `${window.location.pathname}?group=${track}`;
+      window.location.href = newUrl; 
+    }
 
     function switchTrack(track, updateURL = true) {
       currentTrack = track;
@@ -315,6 +335,18 @@
       renderPage(activeTrack);
     });
   </script>
+  <!-- Track Selection Modal (Shown if no track is found) -->
+<div id="global-track-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(15, 23, 42, 0.9); justify-content:center; align-items:center; z-index:99999;">
+    <div style="background:var(--card-bg, #1e293b); border:1px solid var(--border, #485f81); padding:30px; border-radius:12px; width:340px; text-align:center; color:var(--text, #f8fafc); font-family:system-ui, sans-serif; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
+        <h3 style="margin-top:0; margin-bottom:10px;">Select Academic Track</h3>
+        <p style="color:var(--text-muted, #94a3b8); font-size:0.9rem; margin-bottom:20px;">Please select your track to continue:</p>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+            <button onclick="selectAndCloseModal('BS')" style="padding:12px; background:var(--accent, #3b82f6); color:white; border:none; border-radius:6px; font-weight:600; cursor:pointer;">Bachelor Seminar (BS)</button>
+            <button onclick="selectAndCloseModal('BT')" style="padding:12px; background:var(--accent, #3b82f6); color:white; border:none; border-radius:6px; font-weight:600; cursor:pointer;">Bachelor Thesis (BT)</button>
+            <button onclick="selectAndCloseModal('MS')" style="padding:12px; background:var(--accent, #3b82f6); color:white; border:none; border-radius:6px; font-weight:600; cursor:pointer;">Master Seminar (MS)</button>
+        </div>
+    </div>
+</div>
 </body>
 
 </html>

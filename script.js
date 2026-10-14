@@ -4,15 +4,21 @@
 
 const VALID_TRACKS = ['BS', 'BT', 'MS'];
 
-// Get active track from URL parameter, falling back to LocalStorage or 'BS'
+// Get active track from URL parameter or LocalStorage (NO FALLBACK TO BS)
 function getActiveTrack() {
   const currentParams = new URLSearchParams(window.location.search);
   let groupParam = currentParams.get('group');
 
-  if (!groupParam || !VALID_TRACKS.includes(groupParam.toUpperCase())) {
-    return localStorage.getItem('student_track') || 'BS';
+  if (groupParam && VALID_TRACKS.includes(groupParam.toUpperCase())) {
+    return groupParam.toUpperCase();
   }
-  return groupParam.toUpperCase();
+  
+  let stored = localStorage.getItem('student_track');
+  if (stored && VALID_TRACKS.includes(stored.toUpperCase())) {
+    return stored.toUpperCase();
+  }
+
+  return null; // Returns null if no valid track is found anywhere
 }
 
 
@@ -34,21 +40,15 @@ window.now = new Date();
 window.isDevOnlyForGroup = function (devOnly, group) {
   if (!devOnly) return false;
 
-  // 1. If devOnly is a boolean (e.g., devOnly: true)
   if (typeof devOnly === 'boolean') {
     return devOnly;
   }
-
-  // 2. If devOnly is an array (e.g., devOnly: ['BS', 'BT'])
   if (Array.isArray(devOnly)) {
     return devOnly.includes(group);
   }
-
-  // 3. If devOnly is an object (e.g., devOnly: { BS: true, BT: false })
   if (typeof devOnly === 'object') {
     return !!devOnly[group];
   }
-
   return false;
 };
 
@@ -57,18 +57,16 @@ function protectCurrentPage() {
 
   const currentPageFile = window.location.pathname.split('/').pop() || 'index.html';
   const currentGroup = getActiveTrack();
+  if (!currentGroup) return;
 
-  // Find resource entry for this page
   const currentRes = window.RESOURCES ? window.RESOURCES.find(r => r.file === currentPageFile) : null;
 
   if (currentRes) {
-    // 1. Check if dev-only for this specific group
     if (isDevOnlyForGroup(currentRes.devOnly, currentGroup)) {
       renderLockedPage(currentGroup, "This document is currently under development.");
       return;
     }
 
-    // 2. Check standard release date lock
     if (typeof window.isResourceUnlocked === 'function' && !window.isResourceUnlocked(currentPageFile, currentGroup)) {
       const dateText = typeof window.getFormattedReleaseDate === 'function'
         ? window.getFormattedReleaseDate(currentPageFile, currentGroup)
@@ -94,7 +92,7 @@ function renderLockedPage(group, message) {
 
 
 // ==========================================
-// 3. TRACK SELECTOR UI LOGIC
+// 3. TRACK SELECTOR UI LOGIC & MODAL
 // ==========================================
 
 function initTrackSelector() {
@@ -112,106 +110,81 @@ function initTrackSelector() {
   });
 }
 
+function showTrackSelectionModal() {
+  if (document.getElementById('global-track-modal')) return;
+
+  const modal = document.createElement('div');
+  modal.id = 'global-track-modal';
+  modal.style.cssText = `
+    display: flex;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(15, 23, 42, 0.9);
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+  `;
+
+  modal.innerHTML = `
+    <div style="background: #1e293b; border: 1px solid #485f81; padding: 30px; border-radius: 12px; width: 340px; text-align: center; color: #f8fafc; font-family: system-ui, sans-serif; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
+      <h3 style="margin-top: 0; margin-bottom: 10px;">Select Academic Track</h3>
+      <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 20px;">Please select your track to continue:</p>
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <button onclick="switchTrack('BS')" style="padding: 12px; background: #3b82f6; color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer;">Bachelor Seminar (BS)</button>
+        <button onclick="switchTrack('BT')" style="padding: 12px; background: #3b82f6; color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer;">Bachelor Thesis (BT)</button>
+        <button onclick="switchTrack('MS')" style="padding: 12px; background: #3b82f6; color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer;">Master Seminar (MS)</button>
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(modal);
+}
+
 function switchTrack(track) {
   if (!VALID_TRACKS.includes(track)) return;
 
   localStorage.setItem('student_track', track);
 
-  document.querySelectorAll('.track-btn').forEach(btn => {
-    if (btn.getAttribute('data-track') === track) {
-      btn.classList.add('active');
-    } else {
-      btn.classList.remove('active');
-    }
-  });
+  const modal = document.getElementById('global-track-modal');
+  if (modal) modal.remove();
 
-  // Add this helper near the top of script.js
-
-
-  const backLink = document.getElementById('back-link');
-  if (backLink) {
-    backLink.href = `index.html?group=${track}`;
-  }
-
-  // Check dynamically if a custom render function exists at runtime
-  if (typeof renderPage === 'function') {
-    if (window.history.pushState) {
-      window.history.pushState({}, '', `${window.location.pathname}?group=${track}`);
-    }
-    renderPage(track);
-  } else if (typeof renderRoadmap === 'function') {
-    if (window.history.pushState) {
-      window.history.pushState({}, '', `${window.location.pathname}?group=${track}`);
-    }
-    renderRoadmap(track);
-  } else if (typeof renderHubResources === 'function') {
-    if (window.history.pushState) {
-      window.history.pushState({}, '', `${window.location.pathname}?group=${track}`);
-    }
-    renderHubResources(track);
-  } else {
-    // Fallback: full reload with updated URL query
-    window.location.href = `${window.location.pathname}?group=${track}`;
-  }
+  // Update URL and reload/render cleanly
+  const url = new URL(window.location.href);
+  url.searchParams.set('group', track);
+  window.location.href = url.toString();
 }
 
 function renderDevBanner() {
   if (!window.isDev) return;
-
-  // Prevent duplicate banners
   if (document.getElementById('dev-mode-banner')) return;
 
   const banner = document.createElement('div');
   banner.id = 'dev-mode-banner';
   banner.style.cssText = `
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 99999;
-    background: #980029;
-    color: #ffffff;
-    font-size: 0.85rem;
-    font-weight: 700;
-    text-align: center;
-    padding: 0.4rem 1rem;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    letter-spacing: 0.05em;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 99999;
+    background: #980029; color: #ffffff; font-size: 0.85rem; font-weight: 700;
+    text-align: center; padding: 0.4rem 1rem; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    display: flex; justify-content: space-between; align-items: center; letter-spacing: 0.05em;
   `;
 
   banner.innerHTML = `
     <span>🛠️ <strong>DEV MODE ACTIVE</strong> — Hidden & Locked Content Unlocked</span>
-    <button onclick="exitDevMode()" style="
-      background: rgba(255, 255, 255, 0.2);
-      border: 1px solid rgba(255, 255, 255, 0.5);
-      color: white;
-      padding: 2px 8px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 0.75rem;
-      font-weight: 600;
-      transition: background 0.2s;
-    " onmouseover="this.style.background='rgba(255,255,255,0.4)'" onmouseout="this.style.background='rgba(255,255,255,0.2)'">
+    <button onclick="exitDevMode()" style="background: rgba(255, 255, 255, 0.2); border: 1px solid rgba(255, 255, 255, 0.5); color: white; padding: 2px 8px; border-radius: 4px; cursor: pointer; font-size: 0.75rem; font-weight: 600;">
       Exit Dev Mode ✕
     </button>
   `;
 
   document.body.prepend(banner);
-
-  // Push page content down slightly so top header isn't obscured
   document.body.style.marginTop = `${banner.offsetHeight}px`;
 }
 
-// Function to exit dev mode easily
 window.exitDevMode = function () {
   sessionStorage.removeItem('devMode');
   const url = new URL(window.location.href);
   url.searchParams.delete('mode');
   window.location.href = url.toString();
 };
+
 
 // ==========================================
 // RESOURCE UNLOCK & FORMATTING UTILITIES
@@ -253,8 +226,14 @@ window.isResourceUnlocked = function (fileOrRes, track) {
 // ==========================================
 
 function onInit() {
-
   renderDevBanner();
+
+  // CHECK TRACK: If no track is selected anywhere, show the modal and stop execution
+  const activeTrack = getActiveTrack();
+  if (!activeTrack) {
+    showTrackSelectionModal();
+    return; // Stops running page rendering / protection until chosen
+  }
 
   if (window.isDev) {
     document.querySelectorAll('.dev-only').forEach(el => el.style.display = 'block');
