@@ -85,7 +85,7 @@ const SHARED_TIMELINE_DATA = [
     "TargetDate": "23-10-2026",
     "Groups": "MS",
     "RefDoc": "Project Guidelines",
-    "description": "First Project Draft to be submitted via WueCampus. Usually you will be invited for an individual meeting the week after the submission. Only for students carrying out an own contribution project. ",
+    "description": "First Project Draft to be submitted via WueCampus. Usually you will be invited for an individual meeting the week after the submission. Only for students carrying out an experimental project. ",
     "block": "2.0",
     "syllabus": "false"
   },
@@ -145,7 +145,7 @@ const SHARED_TIMELINE_DATA = [
     "TargetDate": "27-11-2026",
     "Groups": "MS",
     "RefDoc": "Project Guidelines",
-    "description": "Submission of your design proposal and/or survey proposal. Only for students carrying out an own contribution project.",
+    "description": "Submission of your design proposal and/or survey proposal. Only for students carrying out an experimental project.",
     "block": "2.0",
     "syllabus": "false"
   },
@@ -195,7 +195,7 @@ const SHARED_TIMELINE_DATA = [
     "TargetDate": "09-12-2026",
     "Groups": "MS",
     "RefDoc": "Project Guidelines",
-    "description": "Submission of final design and/or survey used for data collection. Only for students carrying out an own contribution project.",
+    "description": "Submission of final design and/or survey used for data collection. Only for students carrying out an experimental project.",
     "block": "2.0",
     "syllabus": "false"
   },
@@ -215,7 +215,7 @@ const SHARED_TIMELINE_DATA = [
     "TargetDate": "09-01-2027",
     "Groups": "MS",
     "RefDoc": "Project Guidelines",
-    "description": "Raw collected data submitted via WueCampus. Only for students carrying out an own contribution project.",
+    "description": "Raw collected data submitted via WueCampus. Only for students carrying out an experimental project.",
     "block": "2.0",
     "syllabus": "false"
   },

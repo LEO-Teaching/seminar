@@ -3,7 +3,7 @@
 
 <head>
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/png" href="https://leo-teaching.github.io/seminar/mortarboard.png"/>
+  <link rel="icon" type="image/png" href="https://leo-teaching.github.io/seminar/mortarboard.png" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Course Guidelines & Project Details</title>
@@ -14,7 +14,7 @@
       --bg: #0f172a;
       --card-bg: #1e293b;
       --text: #f8fafc;
-      --text-muted: #94a3b8;
+      --text-muted: #c2d0e5;
       --border: #334155;
       --primary: #3b82f6;
       --primary-glow: rgba(59, 130, 246, 0.15);
@@ -23,7 +23,6 @@
 
     * {
       box-sizing: border-box;
-      margin: 0;
       padding: 0;
     }
 
@@ -120,7 +119,8 @@
     }
 
     ul {
-      margin-bottom: 1.5rem;
+      margin-bottom: 0.5rem;
+      margin-top: 0.5rem;
       padding-left: 1.5rem;
       color: var(--text-muted);
     }
@@ -170,6 +170,78 @@
       margin-bottom: 0;
       color: #e2e8f0;
     }
+
+    details {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+      border-radius: 2pt;
+      margin-bottom: 0.5rem;
+      transition: border-color 0.2s;
+    }
+
+    details:hover {
+      border-color: #60a5fa;
+      /* highlights the border slightly on hover */
+    }
+
+    summary {
+      cursor: pointer;
+      padding: 0.25rem 0.25rem;
+      font-weight: 600;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      /* removes default browser arrow if you want it cleaner */
+    }
+
+    summary::before {
+      content: "▼";
+      font-size: 0.75rem;
+      color: #93c5fd;
+      transition: transform 0.2s ease;
+      margin-right: 0.5rem;
+    }
+
+    details[open] summary::before {
+      transform: rotate(180deg); /* Turns the triangle downward when open */
+    }
+
+    details>div {
+      margin-left: 1.5rem;
+      margin-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-muted);
+    }
+
+
+    .collapse-section {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  padding: 0.5rem
+}
+
+.collapse-header {
+  cursor: pointer;
+  padding: 0.5rem;
+  user-select: none;
+}
+
+/* Optional: removes margins from h3 inside summary so it aligns nicely */
+.collapse-header h4 {
+  margin: 0;
+  display: inline; 
+}
+.collapse-header h3 {
+  margin: 0;
+  display: inline; 
+}
+
+.collapse-content {
+  padding: 0 0rem 0rem 0rem;
+}
   </style>
 </head>
 
@@ -205,140 +277,633 @@
       "Info Project": {
         title: "Guideline: Project Details",
         commonContent: `
-          <p>This project is a crucial component of your academic journey, providing you with the opportunity to apply theoretical knowledge to your own research project. This section outlines the expectations and requirements for your work.</p>
+             <p>This project is a crucial component of your academic journey, providing you with the opportunity to apply
+                  theoretical knowledge to your own research project. This document outlines the expectations and requirements for
+                  your work and includes some useful tipps on how to approach the project.</p>
 
-          <h2>Helpful Resources</h2>
-          
-          <h3>Methodology</h3>
-          <ul id="dynamic-methodology-list">
-            <!-- Dynamically injected via script -->
-          </ul>
+              <h2>Helpful Resources</h2>
 
-          <h3>Survey Platforms</h3>
-          <p>If you are planning to use a "simple" survey for data collection, you can use general survey platforms (Google Forms, Microsoft Forms, etc.). If you are implementing an online survey experiment requiring randomization or treatments, consider:</p>
-          <ul>
-            <li><strong>SoSci Survey:</strong> Offers a free version for academic non-profit, non-published papers</li>
-            <li><strong>LimeSurvey, oTree, Gorilla, formr, PsyToolkit</strong></li>
-          </ul>
-          <p>Make sure your chosen platform supports features like completion time tracking, single-page completion rates, and randomized treatment assignment, depending on what you need for your specific project.</p>
+              <details class="collapse-section">
+                  <summary class="collapse-header">
+                      <h4>Methodology</h4>
+                  </summary>
+                  <div class="collapse-content">
+                      <ul id="dynamic-methodology-list">
+                          <!-- Dynamically injected via script -->
+                      </ul>
+                  </div>
+              </details>
 
-          <h3>Data Analysis Tools</h3>
-          <p>For your data analysis and presentation, you may need programming or statistical tools. Useful university resources include:</p>
-          <ul>
-            <li><a href="https://www.rz.uni-wuerzburg.de/dienste/kurse/" target="_blank">Kurse – Rechenzentrum</a>: Practical training sessions ranging from basic Office software to advanced network administration.</li>
-            <li><a href="https://herdt-campus.com/" target="_blank">Herdt-Campus</a>: Digital library providing educational manuals and e-books.</li>
-            <li><a href="https://openwuecampus.uni-wuerzburg.de/moodle/enrol/index.php?id=19" target="_blank">R | OpenWueCampus</a>: Introductory e-learning module for R programming.</li>
-            <li><a href="https://openwuecampus.uni-wuerzburg.de/moodle/enrol/index.php?id=22" target="_blank">R2 | OpenWueCampus</a>: Follow-up course for advanced data manipulation and visualization.</li>
-            <li><a href="https://openwuecampus.uni-wuerzburg.de/moodle/enrol/index.php?id=5" target="_blank">SPSS Teil 1 & Part 2</a>: Beginner and intermediate IBM SPSS online courses.</li>
-          </ul>
+              <details class="collapse-section">
+                  <summary class="collapse-header">
+                      <h4>Survey Platforms</h4>
+                  </summary>
+                  <div class="collapse-content">
+                      <p>If you are planning to use a "simple" survey for data collection, you can use general survey platforms
+                          (Google Forms, Microsoft Forms, etc.). If you are implementing an online survey experiment requiring
+                          randomization or treatments, consider:</p>
+                      <ul>
+                          <li><strong>SoSci Survey:</strong> Offers a free version for academic non-profit, non-published papers
+                          </li>
+                          <li><strong>LimeSurvey, oTree, Gorilla, formr, PsyToolkit</strong></li>
+                      </ul>
+                      <p>Make sure your chosen platform supports features like completion time tracking, single-page completion
+                          rates, and randomized treatment assignment, depending on what you need for your specific project.</p>
+                  </div>
+              </details>
+
+              <details class="collapse-section">
+                  <summary class="collapse-header">
+                      <h4>Data Analysis Tools</h4>
+                  </summary>
+                  <div class="collapse-content">
+                      <p>For your data analysis and presentation, you may need programming or statistical tools. Useful university
+                          resources include:</p>
+                      <ul>
+                          <li><a href="https://www.rz.uni-wuerzburg.de/dienste/kurse/" target="_blank">Kurse – Rechenzentrum</a>:
+                              Practical training sessions ranging from basic Office software to advanced network administration.
+                          </li>
+                          <li><a href="https://herdt-campus.com/" target="_blank">Herdt-Campus</a>: Digital library providing
+                              educational manuals and e-books (Web development, Python, Databases, Office etc.).</li>
+                          <li><a href="https://openwuecampus.uni-wuerzburg.de/moodle/enrol/index.php?id=19" target="_blank">R |
+                                  OpenWueCampus</a>: Introductory e-learning module for R programming.</li>
+                          <li><a href="https://openwuecampus.uni-wuerzburg.de/moodle/enrol/index.php?id=22" target="_blank">R2 |
+                                  OpenWueCampus</a>: Follow-up course for advanced data manipulation and visualization.</li>
+                          <li><a href="https://openwuecampus.uni-wuerzburg.de/moodle/course/search.php?areaids=core_course-course&q=spss"
+                                  target="_blank">SPSS Teil 1 & 2</a>: Beginner and intermediate IBM SPSS online courses.</li>
+                      </ul>
+                  </div>
+              </details>
         `,
         trackContent: {
           "BT": `
-            <h2>Bachelor Thesis Project</h2>
-            <p>Your thesis project in probably the first project in which you have the possibility to implement the full research process: read relevant literature, formulate a focused research question, develop and implement an experimental design, collect data, analyze the results, and write a thesis presenting your findings.</p>
-            <p>For your thesis project you should remember to be </p>
-            <div class="todo-box">Include requirements for the Bachelor Thesis project here: read literature, find a research question, implement a design, collect data, analyze, and write a paper presenting findings.</div>
+                <h2>Bachelor Thesis Project</h2>
+                  <p>Your thesis gives you experience with the full research process: engaging with literature, formulating a
+                      question, implementing a design, collecting and analyzing data, and presenting your findings.</p>
 
-            <h3 id="bt_proj_draft">First Project Draft</h3>
-            <p>
-                Your first project draft is your tool to pitch your idea to us so that we can understand what you want to work on and match you with the most suitable supervisor. As with any other draft in the thesis writing process at our chair, we ask you to be as precise as possible so we can provide you with meaningful suggestions and feedback. It should include a clear outline of the problem statement, objectives, methodology, and expected outcomes. To submit your proposal, please use the draft template available at <a  href="https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2FLEO-Teaching%2Fseminar%2Frefs%2Fheads%2Fmain%2FProject_Drafts%2FProject_Draft_Experiment.docx&wdOrigin=BROWSELINK" target="_blank" style="color: #2b6cb0;">this link</a>. Submission happens via WueCampus. After your submission you might be invited for a meeting to discuss more in detail your idea. 
-            </p>
+                  <p><strong>Start from the literature:</strong> Identify a phenomenon that interests you and explore the relevant
+                      research. Prioritize a small set of well-understood papers over a long reading list. Include empirical
+                      applications alongside theoretical work: they can help you identify useful methods and feasible designs. You are
+                      responsible for understanding the sources you cite.</p>
 
-            <div class="todo-box">
-                <h4>Project Draft Structure & Expectations</h4>
-                <ul>
-                    <li><strong>Working Title & Research Question:</strong> State your proposed title and formulate a precise, focused core question you intend to answer.</li>
-                    <li><strong>Motivation & Context:</strong> Briefly explain the practical or theoretical relevance of the topic—why does this question matter?</li>
-                    <li><strong>Core Literature:</strong> List the 2–3 key academic papers that form the baseline of your research and outline how your work builds on them.</li>
-                    <li><strong>Proposed Methodology & Data:</strong> Describe the theoretical framework, empirical strategy, or data source you plan to use to address your question.</li>
-                    <li><strong>Expected Outcome & Roadmap:</strong> Outline your initial hypotheses, main expected takeaways, and a brief projected timeline for your project.</li>
-                </ul>
-            </div>
+                  <p><strong>Keep your question focused and your design manageable:</strong> Aim to answer one precise question within
+                      the available time and resources. Each treatment and measurement should serve that question. A simple, carefully
+                      implemented project is stronger than a complex design that you cannot execute or interpret convincingly. Your
+                      contribution may be a modest extension or adaptation of existing research, provided you explain what it adds.
+                  </p>
 
-            <h3 id="bt_ext_proj">Second Project Draft</h3>
-            <p>
-                Your second project draft serves to show us that what started as a rough idea is now coming to life. At this stage, we want to see significant progress and a much higher level of detail regarding your research setup, including specific treatment conditions, operationalized variables, and empirical design choices. As with all work submitted to our chair, being as precise as possible allows us to give you targeted, high-value feedback ahead of your full write-up. To complete your extended project proposal, please use the draft template available at <a  href="https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2FLEO-Teaching%2Fseminar%2Frefs%2Fheads%2Fmain%2FProject_Drafts%2FExtended_Project_Draft_Experiment.docx&wdOrigin=BROWSELINK" target="_blank" style="color: #2b6cb0;">this link</a>. Submission happens via WueCampus.
-            </p>
+                  <p><strong>Collect your own data:</strong> Your project must include primary data generated through a survey or
+                      experiment that you implement with participants. Existing datasets may complement this evidence but cannot be
+                      its only source. Plan recruitment and a realistic sample size with your supervisor. Seek enough observations to
+                      address your question meaningfully while protecting measurement quality, and acknowledge when your sample limits
+                      the conclusions you can draw.</p>
 
-            <div class="todo-box">
-                <h4>Extended Project Draft Structure & Expectations</h4>
-                <ul>
-                    <li><strong>Refined Title & Core Hypotheses:</strong> State your updated research question alongside explicit, testable hypotheses.</li>
-                    <li><strong>Detailed Experimental Design / Identification Strategy:</strong> Detail your specific treatment arms, control groups, randomization scheme, or econometric identification strategy.</li>
-                    <li><strong>Operationalization & Data Setup:</strong> Specify exact primary/secondary datasets, sample sizes, variable definitions, and data collection procedures.</li>
-                    <li><strong>Preliminary Results or Analysis Pipeline:</strong> Present any initial exploratory analysis, pilot data, pre-analysis plans, or detailed specifications of your main regression models.</li>
-                    <li><strong>Critical Assessment & Identified Risks:</strong> Highlight potential practical challenges, power limitations, or potential threats to identification, along with your planned solutions.</li>
-                </ul>
-            </div>
+                  <p><strong>Analyze and interpret your evidence carefully:</strong> Document how you clean and organize the data, use
+                      appropriate descriptive statistics, visualizations, and statistical methods, and connect the results to your
+                      research question. Distinguish what the evidence supports from what remains uncertain. Unexpected or
+                      statistically insignificant findings are valid outcomes: the aim is a sound research process and an honest
+                      interpretation.</p>
 
-            <h3 id="bt_survey1">Design Proposal and/or Survey</h3>
-            <p>At this point, you are expected to have a working prototype of your survey/experiment ready for testing. Even though it is called a draft, your survey should be complete. The idea is that you will present your design in your first presentation to receive our feedback as well as peer feedbacks. Your esperimental design and/or your survey should be so ready and complet that if we told you that is okay, you could start collenting data the same day.</p>
-            
-            <div class="callout">
-              <div class="callout-title">💡 Serious Testing Hint</div>
-              <p>The quality of your survey/experiment directly impacts the validity and reliability of your findings. Once data collection starts, it is too late to change your design. Ensure thorough testing beforehand!</p>
-            </div>
+                  <h3 id="bt_proj_draft">First Project Draft</h3>
+                  <p>
+                      Your first project draft is your tool to pitch your idea to us so that we can understand what you want to work
+                      on and match you with the most suitable supervisor. As with any other draft in the thesis writing process at our
+                      chair, we ask you to be as precise as possible so we can provide you with meaningful suggestions and feedback.
+                      It should include a clear outline of the problem statement, objectives, methodology, and expected outcomes. To
+                      submit your proposal, please use the draft template available at <a
+                          href="https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2FLEO-Teaching%2Fseminar%2Frefs%2Fheads%2Fmain%2FProject_Drafts%2FProject_Draft_Experiment.docx&wdOrigin=BROWSELINK"
+                          target="_blank" style="color: #2b6cb0;">this link</a>. Submission happens via WueCampus. After your
+                      submission you might be invited for a meeting to discuss more in detail your idea.
+                  </p>
+
+
+                  <h4>Project Draft Structure</h4>
+
+                  <details>
+                      <summary>Name:</summary>
+                      <div> State your proposed title. This shouldn't be a question</div>
+                  </details>
+                  <details>
+                      <summary>Overall topic:</summary>
+                      <div> Briefly explain the topic you are interested in, together with its practical or theoretical relevance. Why
+                          does this topic matter? Why are you interested in it?</div>
+                  </details>
+                  <details>
+                      <summary>
+                          Concrete research question:</summary>
+                      <div> What exactly do you want to study within this topic?
+
+                          <!-- Example 1: Broad vs Narrow -->
+                          <p><strong>Avoid a question that is too broad:</strong></p>
+                          <blockquote>
+                              <em>"What makes people happy?"</em>
+                          </blockquote>
+                          <p>
+                              ❌ <strong>Why it doesn't work:</strong> This question is far too wide in scope. "People" covers the
+                              entire human population, and "happiness" can be measured in dozens of ways (psychological, economic,
+                              biological, sociological). It cannot be adequately addressed within the limits of a thesis.
+                          </p>
+
+                          <p><strong>Choose a question that is feasible and narrow:</strong></p>
+                          <blockquote>
+                              <em>"How does the duration of daily remote work affect self-reported job satisfaction among full-time
+                                  office workers in Germany?"</em>
+                          </blockquote>
+                          <p>
+                              ✅ <strong>Why it works:</strong> It specifies a target population (full-time office workers in Germany),
+                              a clear variable/cause (duration of daily remote work), and a measurable outcome (self-reported job
+                              satisfaction).
+                          </p>
+
+                          <hr>
+
+                          <!-- Example 2: Yes/No Question -->
+                          <p><strong>Avoid Yes/No Questions:</strong></p>
+                          <blockquote>
+                              <em>"Is remote work beneficial for employees?"</em>
+                          </blockquote>
+                          <p>
+                              ❌ <strong>Why it doesn't work:</strong> "Beneficial" is a yes/no judgment call.
+                          </p>
+
+                          <p><strong>A better question would be:</strong></p>
+                          <blockquote>
+                              <em>"How does remote work influence employee productivity and work-life balance?"</em>
+                          </blockquote>
+                          <p>
+                              ✅ <strong>Why it works:</strong> It focuses on how specific outcomes (productivity, work-life balance)
+                              are affected rather than just asking if remote work is "good" or "bad."
+                          </p>
+                      </div>
+                  </details>
+                  <details>
+                      <summary>Short description of project:</summary>
+                      <div> Briefly explain how you would like to answer the research question, which are you expectations and
+                          hypotheses etc.</div>
+                  </details>
+                  <details>
+                      <summary>Research Method:</summary>
+                      <div> These are some of the available research methods that you could use in your project:
+                          <ul>
+                              <li>
+                                  <strong>1. Online Behavioral Game / Experiment:</strong>
+                                  <p>A web-based game or decision task (e.g., using oTree or Qualtrics) where participants are
+                                      randomly assigned to a control group or a treatment group with different rules, payoffs, or
+                                      information setups to observe strategic behavior.</p>
+                                  <p><em>Example Research Question:</em> "How does the introduction of a chat option affect
+                                      contribution levels in a Public Goods Game?"</p>
+                              </li>
+
+                              <li>
+                                  <strong>2. Survey Experiment / Vignette Study:</strong>
+                                  <p>A randomized scenario embedded inside an online questionnaire, where different groups of
+                                      participants receive slightly altered descriptions or framing of a situation to test how
+                                      information affects decisions or opinions.</p>
+                                  <p><em>Example Research Question:</em> "How does framing a carbon offset policy as a 'fee' versus a
+                                      'tax' affect willingness to pay?"</p>
+                              </li>
+
+                              <li>
+                                  <strong>3. Small Audit / Correspondence Study:</strong>
+                                  <p>A field method where matched pairs of inquiries, emails, or applications (e.g., to landlords or
+                                      employers) are sent out with identical details except for one single randomized characteristic
+                                      to test for discrimination or response bias.</p>
+                                  <p><em>Example Research Question:</em> "To what extent do foreign-sounding names affect callback
+                                      rates for entry-level rental apartments?"</p>
+                              </li>
+
+                              <li>
+                                  <strong>4. Standard Survey:</strong>
+                                  <p>Gathering self-reported data on economic behaviors, financial choices, or individual preferences
+                                      using an online questionnaire. </p>
+                                  <p><em>Example Research Question:</em> "How does financial literacy influence personal savings
+                                      behavior among young adults?"</p>
+                                  <p><em>Note:</em> For this kind of research method there is no exogenous variation (treatment), so
+                                      no causal analysis can be done.</p>
+                              </li>
+                          </ul>
+                      </div>
+                  </details>
+                  <details>
+                      <summary>Key References:</summary>
+                      <div>
+                          <p>List up to 3 core academic papers that relate to your project. Avoid broad overview books and focus on
+                              specific journal articles instead. Your references could include any of the following types:</p>
+                          <ul>
+                              <li>
+                                  <strong>A similar research question:</strong> Papers studying a very similar outcome or
+                                  relationship, even if tested in a different context, country, or market.
+                              </li>
+                              <li>
+                                  <strong>A similar method or setup:</strong> Papers using the same research design you plan to use,
+                                  such as a specific game setup, survey structure, or audit study.
+                              </li>
+                              <li>
+                                  <strong>The core economic or behavioral mechanism:</strong> Papers that explain or test the
+                                  underlying theoretical effect you are focusing on (e.g., framing effects, loss aversion, default
+                                  bias).
+                              </li>
+                              <li>
+                                  <strong>Relevant background or context:</strong> Papers providing key empirical facts, policy
+                                  context, or benchmark findings related to your specific topic.
+                              </li>
+                          </ul>
+                      </div>
+                  </details>
+                  <details>
+                      <summary>
+                          Your questions for our next meeting:</summary>
+                      <div>
+                          <p>Briefly list any specific points you want to discuss during our meeting. <em>Please review the shared
+                                  online resources beforehand—many common questions are already answered there, and checking them
+                                  first ensures we can focus our meeting time on what you actually need.</em></p>
+
+                          <p><strong>✅ What to ask / discuss:</strong></p>
+                          <ul>
+                              <li>Doubts or uncertainties about your research direction or feasibility</li>
+                              <li>Potential design problems, practical bottlenecks, or limitations you foresee</li>
+                              <li>Technical or software questions (e.g., setting up your survey or online experiment)</li>
+                              <li>Decisions where you are choosing between two options and want feedback</li>
+                              <li>Anything specific you are stuck on or worried about</li>
+                          </ul>
+
+                          <p><strong>❌ What NOT to ask:</strong></p>
+                          <ul>
+                              <li><strong>"What literature should I use?"</strong> — Finding your key literature is part of your
+                                  project.</li>
+                              <li><strong>"How many hypotheses do I need?"</strong> — There is no magic number. Your hypotheses flow
+                                  directly from your research question.</li>
+                              <li><strong>Questions already answered in the shared online docs</strong> — Please check those first!
+                                  Spending meeting time on questions covered in the docs leaves no time to discuss the important,
+                                  custom details of your specific project.</li>
+                          </ul>
+                      </div>
+                  </details>
+
+
+
+                  <h3 id="bt_ext_proj">Second Project Draft</h3>
+                  <p>
+                      Your second project draft serves to show us that what started as a rough idea is now coming to life. At this
+                      stage, we want to see significant progress and a much higher level of detail regarding your research setup,
+                      including specific treatment conditions, operationalized variables, and empirical design choices. As with all
+                      work submitted to our chair, being as precise as possible allows us to give you targeted, high-value feedback
+                      ahead of your full write-up. To complete your extended project proposal, please use the draft template available
+                      at <a
+                          href="https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2FLEO-Teaching%2Fseminar%2Frefs%2Fheads%2Fmain%2FProject_Drafts%2FExtended_Project_Draft_Experiment.docx&wdOrigin=BROWSELINK"
+                          target="_blank" style="color: #2b6cb0;">this link</a>. Submission happens via WueCampus.
+                  </p>
+
+                  <div class="todo-box">
+                      <h4>Extended Project Draft Structure & Expectations</h4>
+                      <ul>
+                          <li><strong>Refined Title & Core Hypotheses:</strong> State your updated research question alongside
+                              explicit, testable hypotheses.</li>
+                          <li><strong>Detailed Experimental Design / Identification Strategy:</strong> Detail your specific treatment
+                              arms, control groups, randomization scheme, or econometric identification strategy.</li>
+                          <li><strong>Operationalization & Data Setup:</strong> Specify exact primary/secondary datasets, sample
+                              sizes, variable definitions, and data collection procedures.</li>
+                          <li><strong>Preliminary Results or Analysis Pipeline:</strong> Present any initial exploratory analysis,
+                              pilot data, pre-analysis plans, or detailed specifications of your main regression models.</li>
+                          <li><strong>Critical Assessment & Identified Risks:</strong> Highlight potential practical challenges, power
+                              limitations, or potential threats to identification, along with your planned solutions.</li>
+                      </ul>
+                  </div>
+
+                  <h3 id="bt_survey1">Design Proposal and/or Survey</h3>
+                  <p>At this stage, you should have a working prototype of your survey/experiment, ready to be tested. Although it is
+                      referred to as a ‘draft’, your survey should be complete. The idea is that you present your project during the
+                      first presentation, so that you can receive feedback from us and your colleagues. Your experimental project
+                      and/or survey should be so well prepared and complete that, if we were to tell you it’s fine, you could start
+                      collecting data right then and there.</p>
+
+                  <div class="callout">
+                      <div class="callout-title">💡 Serious Testing Hint</div>
+                      <p>The quality of your survey/experiment directly impacts the validity and reliability of your findings. Once
+                          data collection starts, it is too late to change your design. Ensure thorough testing beforehand!</p>
+                  </div>
           `,
           "MS": `
-            <h2>Master Seminar Project</h2>
-            <div class="todo-box">Include requirements for the Master Seminar project here: literature review, research question formulation, experimental design or replication execution, data collection, and analysis.</div>
+               <h2>Master Seminar Project</h2>
+                <details class="collapse-section">
+                    <summary class="collapse-header">
+                        <h3>Master Seminar Experimental Project</h3>
+                    </summary>
+                    <p>Your thesis gives you experience with the full research process: engaging with literature, formulating a
+                        question, implementing a design, collecting and analyzing data, and presenting your findings.</p>
 
-            <h3 id="ms_proj_draft">First Project Draft (only for students developing an own contribution)</h3>
-            <div class="todo-box">Include specific requirements for the first project draft and specific templates.</div>
-            <p>
-                Your first project draft is your tool to pitch your idea to us so that we can understand what you want to work on and match you with the most suitable supervisor. As with any other draft in the thesis writing process at our chair, we ask you to be as precise as possible so we can provide you with meaningful suggestions and feedback. It should include a clear outline of the problem statement, objectives, methodology, and expected outcomes. To submit your proposal, please use the draft template available at <a  href="https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2FLEO-Teaching%2Fseminar%2Frefs%2Fheads%2Fmain%2FProject_Drafts%2FProject_Draft_Experiment.docx&wdOrigin=BROWSELINK"  style="color: #2b6cb0;" target="_blank">this link</a>. Submission happens via WueCampus. After your submission you might be invited for a meeting to discuss more in detail your idea. 
-            </p>
+                    <p><strong>Start from the literature:</strong> Identify a phenomenon that interests you and explore the relevant
+                        research. Prioritize a small set of well-understood papers over a long reading list. Include empirical
+                        applications alongside theoretical work: they can help you identify useful methods and feasible designs. You
+                        are responsible for understanding the sources you cite.</p>
+
+                    <p><strong>Keep your question focused and your design manageable:</strong> Aim to answer one precise question
+                        within the available time and resources. Each treatment and measurement should serve that question. A
+                        simple, carefully implemented project is stronger than a complex design that you cannot execute or interpret
+                        convincingly. Your contribution may be a modest extension or adaptation of existing research, provided you
+                        explain what it adds.</p>
+
+                    <p><strong>Collect your own data:</strong> Your project must include primary data generated through a survey or
+                        experiment that you implement with participants. Existing datasets may complement this evidence but cannot
+                        be its only source. Plan recruitment and a realistic sample size with your supervisor. Seek enough
+                        observations to address your question meaningfully while protecting measurement quality, and acknowledge
+                        when your sample limits the conclusions you can draw.</p>
+
+                    <p><strong>Analyze and interpret your evidence carefully:</strong> Document how you clean and organize the data,
+                        use appropriate descriptive statistics, visualizations, and statistical methods, and connect the results to
+                        your research question. Distinguish what the evidence supports from what remains uncertain. Unexpected or
+                        statistically insignificant findings are valid outcomes: the aim is a sound research process and an honest
+                        interpretation.</p>
+
+                    <h3 id="ms_proj_draft">First Project Draft</h3>
+                    <p>
+                        Your first project draft is your tool to pitch your idea to us so that we can understand what you want to
+                        work on and match you with the most suitable supervisor. As with any other draft in the thesis writing
+                        process at our chair, we ask you to be as precise as possible so we can provide you with meaningful
+                        suggestions and feedback. It should include a clear outline of the problem statement, objectives,
+                        methodology, and expected outcomes. To submit your proposal, please use the draft template available at <a
+                            href="https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2FLEO-Teaching%2Fseminar%2Frefs%2Fheads%2Fmain%2FProject_Drafts%2FProject_Draft_Experiment.docx&wdOrigin=BROWSELINK"
+                            style="color: #2b6cb0;" target="_blank">this link</a>. Submission happens via WueCampus. After your
+                        submission you might be invited for a meeting to discuss more in detail your idea.
+                    </p>
+
+                    <h4>Project Draft Structure</h4>
+
+                    <details>
+                        <summary>Name:</summary>
+                        <div> State your proposed title. This shouldn't be a question</div>
+                    </details>
+                    <details>
+                        <summary>Overall topic:</summary>
+                        <div> Briefly explain the topic you are interested in, together with its practical or theoretical relevance.
+                            Why
+                            does this topic matter? Why are you interested in it?</div>
+                    </details>
+                    <details>
+                        <summary>
+                            Concrete research question:</summary>
+                        <div> What exactly do you want to study within this topic?
+
+                            <!-- Example 1: Broad vs Narrow -->
+                            <p><strong>Avoid a question that is too broad:</strong></p>
+                            <blockquote>
+                                <em>"What makes people happy?"</em>
+                            </blockquote>
+                            <p>
+                                ❌ <strong>Why it doesn't work:</strong> This question is far too wide in scope. "People" covers the
+                                entire human population, and "happiness" can be measured in dozens of ways (psychological, economic,
+                                biological, sociological). It cannot be adequately addressed within the limits of a thesis.
+                            </p>
+
+                            <p><strong>Choose a question that is feasible and narrow:</strong></p>
+                            <blockquote>
+                                <em>"How does the duration of daily remote work affect self-reported job satisfaction among
+                                    full-time
+                                    office workers in Germany?"</em>
+                            </blockquote>
+                            <p>
+                                ✅ <strong>Why it works:</strong> It specifies a target population (full-time office workers in
+                                Germany),
+                                a clear variable/cause (duration of daily remote work), and a measurable outcome (self-reported job
+                                satisfaction).
+                            </p>
+
+                            <hr>
+
+                            <!-- Example 2: Yes/No Question -->
+                            <p><strong>Avoid Yes/No Questions:</strong></p>
+                            <blockquote>
+                                <em>"Is remote work beneficial for employees?"</em>
+                            </blockquote>
+                            <p>
+                                ❌ <strong>Why it doesn't work:</strong> "Beneficial" is a yes/no judgment call.
+                            </p>
+
+                            <p><strong>A better question would be:</strong></p>
+                            <blockquote>
+                                <em>"How does remote work influence employee productivity and work-life balance?"</em>
+                            </blockquote>
+                            <p>
+                                ✅ <strong>Why it works:</strong> It focuses on how specific outcomes (productivity, work-life
+                                balance)
+                                are affected rather than just asking if remote work is "good" or "bad."
+                            </p>
+                        </div>
+                    </details>
+                    <details>
+                        <summary>Short description of project:</summary>
+                        <div> Briefly explain how you would like to answer the research question, which are you expectations and
+                            hypotheses etc.</div>
+                    </details>
+                    <details>
+                        <summary>Research Method:</summary>
+                        <div> These are some of the available research methods that you could use in your project:
+                            <ul>
+                                <li>
+                                    <strong>1. Online Behavioral Game / Experiment:</strong>
+                                    <p>A web-based game or decision task (e.g., using oTree or Qualtrics) where participants are
+                                        randomly assigned to a control group or a treatment group with different rules, payoffs, or
+                                        information setups to observe strategic behavior.</p>
+                                    <p><em>Example Research Question:</em> "How does the introduction of a chat option affect
+                                        contribution levels in a Public Goods Game?"</p>
+                                </li>
+
+                                <li>
+                                    <strong>2. Survey Experiment / Vignette Study:</strong>
+                                    <p>A randomized scenario embedded inside an online questionnaire, where different groups of
+                                        participants receive slightly altered descriptions or framing of a situation to test how
+                                        information affects decisions or opinions.</p>
+                                    <p><em>Example Research Question:</em> "How does framing a carbon offset policy as a 'fee'
+                                        versus a
+                                        'tax' affect willingness to pay?"</p>
+                                </li>
+
+                                <li>
+                                    <strong>3. Small Audit / Correspondence Study:</strong>
+                                    <p>A field method where matched pairs of inquiries, emails, or applications (e.g., to landlords
+                                        or
+                                        employers) are sent out with identical details except for one single randomized
+                                        characteristic
+                                        to test for discrimination or response bias.</p>
+                                    <p><em>Example Research Question:</em> "To what extent do foreign-sounding names affect callback
+                                        rates for entry-level rental apartments?"</p>
+                                </li>
+
+                                <li>
+                                    <strong>4. Standard Survey:</strong>
+                                    <p>Gathering self-reported data on economic behaviors, financial choices, or individual
+                                        preferences
+                                        using an online questionnaire. </p>
+                                    <p><em>Example Research Question:</em> "How does financial literacy influence personal savings
+                                        behavior among young adults?"</p>
+                                    <p><em>Note:</em> For this kind of research method there is no exogenous variation (treatment),
+                                        so
+                                        no causal analysis can be done.</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </details>
+                    <details>
+                        <summary>Key References:</summary>
+                        <div>
+                            <p>List up to 3 core academic papers that relate to your project. Avoid broad overview books and focus
+                                on
+                                specific journal articles instead. Your references could include any of the following types:</p>
+                            <ul>
+                                <li>
+                                    <strong>A similar research question:</strong> Papers studying a very similar outcome or
+                                    relationship, even if tested in a different context, country, or market.
+                                </li>
+                                <li>
+                                    <strong>A similar method or setup:</strong> Papers using the same research design you plan to
+                                    use,
+                                    such as a specific game setup, survey structure, or audit study.
+                                </li>
+                                <li>
+                                    <strong>The core economic or behavioral mechanism:</strong> Papers that explain or test the
+                                    underlying theoretical effect you are focusing on (e.g., framing effects, loss aversion, default
+                                    bias).
+                                </li>
+                                <li>
+                                    <strong>Relevant background or context:</strong> Papers providing key empirical facts, policy
+                                    context, or benchmark findings related to your specific topic.
+                                </li>
+                            </ul>
+                        </div>
+                    </details>
+                    <details>
+                        <summary>
+                            Your questions for our next meeting:</summary>
+                        <div>
+                            <p>Briefly list any specific points you want to discuss during our meeting. <em>Please review the shared
+                                    online resources beforehand—many common questions are already answered there, and checking them
+                                    first ensures we can focus our meeting time on what you actually need.</em></p>
+
+                            <p><strong>✅ What to ask / discuss:</strong></p>
+                            <ul>
+                                <li>Doubts or uncertainties about your research direction or feasibility</li>
+                                <li>Potential design problems, practical bottlenecks, or limitations you foresee</li>
+                                <li>Technical or software questions (e.g., setting up your survey or online experiment)</li>
+                                <li>Decisions where you are choosing between two options and want feedback</li>
+                                <li>Anything specific you are stuck on or worried about</li>
+                            </ul>
+
+                            <p><strong>❌ What NOT to ask:</strong></p>
+                            <ul>
+                                <li><strong>"What literature should I use?"</strong> — Finding your key literature is part of your
+                                    project.</li>
+                                <li><strong>"How many hypotheses do I need?"</strong> — There is no magic number. Your hypotheses
+                                    flow
+                                    directly from your research question.</li>
+                                <li><strong>Questions already answered in the shared online docs</strong> — Please check those
+                                    first!
+                                    Spending meeting time on questions covered in the docs leaves no time to discuss the important,
+                                    custom details of your specific project.</li>
+                            </ul>
+                        </div>
+                    </details>
 
 
 
-            <h3 id="ms_ext_proj">Extended Project Draft</h3>
-            <div class="todo-box">Include specific requirements for the extended project draft and specific templates. For both relicationa dn own contribution otpion. SHould show familiarity with data (replication) and be the same as BT etended project draft in case od a own controbution </div>
-
-            <h4>For students developing an own contribution</h4>
-             <p>
-                Your second project draft serves to show us that what started as a rough idea is now coming to life. At this stage, we want to see significant progress and a much higher level of detail regarding your research setup, including specific treatment conditions, operationalized variables, and empirical design choices. As with all work submitted to our chair, being as precise as possible allows us to give you targeted, high-value feedback ahead of your full write-up. To complete your extended project proposal, please use the draft template available at <a  style="color: #2b6cb0;" href="https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2FLEO-Teaching%2Fseminar%2Frefs%2Fheads%2Fmain%2FProject_Drafts%2FExtended_Project_Draft_Experiment.docx&wdOrigin=BROWSELINK" target="_blank">this link</a>. Submission happens via WueCampus.
-            </p>
-
-            <h4>For students developing an replication and extension </h4>
-             <p>
-               To complete your extended project proposal, please use the draft template available at <a  style="color: #2b6cb0;" href="https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2FLEO-Teaching%2Fseminar%2Frefs%2Fheads%2Fmain%2FProject_Drafts%2FExtended_Project_Draft_Replication.docx&wdOrigin=BROWSELINK" target="_blank">this link</a>. Submission happens via WueCampus.
-            </p>
-
+                    <h3 id="ms_ext_proj_exp">Extended Project Draft</h3>
+                    <p>
+                        Your second project draft serves to show us that what started as a rough idea is now coming to life. At this
+                        stage, we want to see significant progress and a much higher level of detail regarding your research setup,
+                        including specific treatment conditions, operationalized variables, and empirical design choices. As with
+                        all work submitted to our chair, being as precise as possible allows us to give you targeted, high-value
+                        feedback ahead of your full write-up. To complete your extended project proposal, please use the draft
+                        template available at <a style="color: #2b6cb0;"
+                            href="https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2FLEO-Teaching%2Fseminar%2Frefs%2Fheads%2Fmain%2FProject_Drafts%2FExtended_Project_Draft_Experiment.docx&wdOrigin=BROWSELINK"
+                            target="_blank">this link</a>. Submission happens via WueCampus.
+                    </p>
 
 
-            
-            <h3 id="ms_survey1">Design proposal</h3>
-            <div class="todo-box">Include specific requirements for how specific the design proposal should be. survey, data collection plan, treatments, sample size etc. This is right now listes only as a deadline for own contribution and not for replication</div>            
-          `,
+
+                    <h3 id="ms_survey1">Design proposal</h3>
+                    <div class="todo-box">Include specific requirements for how specific the design proposal should be. survey, data
+                        collection plan, treatments, sample size etc. This is right now listes only as a deadline for own
+                        contribution and not for replication</div>
+
+                </details>
+
+                <details class="collapse-section">
+                    <summary class="collapse-header">
+                        <h3>Master Seminar Replication Project</h3>
+                    </summary>
+                    <p>Your project combines a thorough understanding of an assigned empirical paper with independent data analysis
+                        and a motivated extension.</p>
+
+                    <p><strong>Understand the baseline paper:</strong> Become familiar with its research question, theoretical
+                        framework, mechanisms, empirical methods, and main findings. Understand how the data and analysis support
+                        its conclusions and where limitations remain. Focus your literature reading on the paper's framework and
+                        research that helps motivate your extension.</p>
+
+                    <p><strong>Reproduce the core results:</strong> Independently prepare the data and reproduce the central results
+                        in the main body of the paper, agreeing on the precise scope with your supervisor. Document cleaning
+                        decisions, variable construction, and estimation procedures in reproducible code. Compare your results with
+                        the original and investigate discrepancies rather than simply reporting whether the numbers match.</p>
+
+                    <p><strong>Develop a focused extension:</strong> Go beyond reproduction by addressing a clear question about the
+                        original findings. This could involve an alternative specification, a justified sample restriction, a
+                        robustness check, a subgroup analysis, or additional data. Explain why the extension is informative and how
+                        it affects the interpretation of the baseline results. New data collection is not required.</p>
+
+                    <p><strong>Prioritize sound reasoning over complexity:</strong> A small, well-motivated extension is more
+                        valuable than several loosely connected analyses. Demonstrate that you understand your methodological
+                        choices, can work independently with the data, and can distinguish what your evidence supports from what
+                        remains uncertain.</p>
+
+
+                    <h3 id="ms_ext_proj_rep">Extended Project Draft</h3>
+                    <p>
+                        To complete your extended project proposal, please use the draft template available at <a
+                            style="color: #2b6cb0;"
+                            href="https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2FLEO-Teaching%2Fseminar%2Frefs%2Fheads%2Fmain%2FProject_Drafts%2FExtended_Project_Draft_Replication.docx&wdOrigin=BROWSELINK"
+                            target="_blank">this link</a>. Submission happens via WueCampus.
+                    </p>
+
+
+                </details>          `,
           "BS": `
             <h2>Bachelor Seminar Project</h2>
             <p>Build a clear argument linking a policy problem, behavioral mechanism, and policy proposal:
-              <ul>
-              <li>Choose a topic and baseline paper following the course’s topic selection procedure. Explain the policy or management problem and why it matters.</li>
-              <li>Summarize the paper: research question, setting, method, and main findings.</li>
-              <li>Explain the behavioral mechanisms: how might they explain the findings? Distinguish evidence from interpretation.</li>
-              <li>When examining the assigned paper, you can propose an additional or alternative mechanism that the paper does not adequately consider or test. Support your explanation with relevant literature.</li>
-              <li>Design a policy proposal to test your chosen mechanism. Specify the intervention, testing strategy, main outcome, and expected result. Could another mechanism explain the same result?</li>
-              </ul>
-              You may address the original policy question or apply one mechanism to another clearly connected problem that can be explained by the same drivers. 
+            <ul>
+                <li>Choose a topic and baseline paper following the course’s topic selection procedure. Explain the policy or
+                    management problem and why it matters.</li>
+                <li>Summarize the paper: research question, setting, method, and main findings.</li>
+                <li>Explain the behavioral mechanisms: how might they explain the findings? Distinguish evidence from
+                    interpretation.</li>
+                <li>When examining the assigned paper, you can propose an additional or alternative mechanism that the paper
+                    does not adequately consider or test. Support your explanation with relevant literature.</li>
+                <li>Design a policy proposal to test your chosen mechanism. Specify the intervention, testing strategy, main
+                    outcome, and expected result. Could another mechanism explain the same result?</li>
+            </ul>
+            You may address the original policy question or apply one mechanism to another clearly connected problem that can be
+            explained by the same drivers.
             </p>
 
             <h3 id="bs_ext_proj">Project Draft</h3>
             <div class="todo-box"> add info on actual template fill out + revise and rephrase teh content here </div>
-            <p>Provide an outline of your work up to now. Use this template to organize your knowledge and ideas, and verify whether you are missing any crucial components.</p>
-            <p>Complete the provided tabular template before your individual meeting. Prioritize clear concepts and concise descriptions.
-            Your ideas may still be provisional, but make them concrete enough to discuss. Explain briefly your assigned paper, prioritizing the interpretation of the results and the key mechanisms at play. Give a description of your experimental proposal and the mechanism you are testing.
+            <p>Provide an outline of your work up to now. Use this template to organize your knowledge and ideas, and verify
+                whether you are missing any crucial components.</p>
+            <p>Complete the provided tabular template before your individual meeting. Prioritize clear concepts and concise
+                descriptions.
+                Your ideas may still be provisional, but make them concrete enough to discuss. Explain briefly your assigned
+                paper, prioritizing the interpretation of the results and the key mechanisms at play. Give a description of your
+                experimental proposal and the mechanism you are testing.
 
-            To complete your project draft, please use the draft template available at <a  style="color: #2b6cb0;" href="https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2FLEO-Teaching%2Fseminar%2Frefs%2Fheads%2Fmain%2FProject_Drafts%2FProject_Draft_BSc_Seminar.docx&wdOrigin=BROWSELINK" target="_blank" >this link</a>. Submission happens via WueCampus.
+                To complete your project draft, please use the draft template available at <a style="color: #2b6cb0;"
+                    href="https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2FLEO-Teaching%2Fseminar%2Frefs%2Fheads%2Fmain%2FProject_Drafts%2FProject_Draft_BSc_Seminar.docx&wdOrigin=BROWSELINK"
+                    target="_blank">this link</a>. Submission happens via WueCampus.
             </p>
           `
         }
       }
     };
 
-const validTracks = ['BS', 'BT', 'MS'];
+    const validTracks = ['BS', 'BT', 'MS'];
 
-window.addEventListener('DOMContentLoaded', () => {
+    window.addEventListener('DOMContentLoaded', () => {
       const activeTrack = getActiveTrack();
       if (!activeTrack) return; // Safeguard in case modal is active
 

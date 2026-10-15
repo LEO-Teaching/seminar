@@ -128,7 +128,7 @@ function showTrackSelectionModal() {
   modal.innerHTML = `
     <div style="background: #1e293b; border: 1px solid #485f81; padding: 30px; border-radius: 12px; width: 340px; text-align: center; color: #f8fafc; font-family: system-ui, sans-serif; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
       <h3 style="margin-top: 0; margin-bottom: 10px;">Select Academic Track</h3>
-      <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 20px;">Please select your track to continue:</p>
+      <p style="color: #c2d0e5; font-size: 0.9rem; margin-bottom: 20px;">Please select your track to continue:</p>
       <div style="display: flex; flex-direction: column; gap: 12px;">
         <button onclick="switchTrack('BS')" style="padding: 12px; background: #3b82f6; color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer;">Bachelor Seminar (BS)</button>
         <button onclick="switchTrack('BT')" style="padding: 12px; background: #3b82f6; color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer;">Bachelor Thesis (BT)</button>

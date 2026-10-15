@@ -106,7 +106,7 @@ export const SHARED_TIMELINE_DATA = [
     TargetDate: "06-11-2026",
     Groups: "MS",
     RefDoc: "Info Project",
-    description: "Extended Project Draft to be submitted via WueCampus. Depending on the type of project you are carrying out (replication or own contribution) the content of this draft might vary. Once you submit, you can ask for a meeting to discuss your project.",
+    description: "Extended Project Draft to be submitted via WueCampus. Depending on the type of project you are carrying out (replication or experiment) the content of this draft might vary. Once you submit, you can ask for a meeting to discuss your project.",
     block: "2.0",
     syllabus: "false"
   },
@@ -146,7 +146,7 @@ export const SHARED_TIMELINE_DATA = [
     TargetDate: "27-11-2026",
     Groups: "MS",
     RefDoc: "Info Project",
-    description: "Submission of your design proposal and/or survey proposal. Only for students carrying out an own contribution project.",
+    description: "Submission of your design proposal and/or survey proposal. Only for students carrying out an experimental project.",
     block: "2.0",
     syllabus: "false"
   },
@@ -186,7 +186,7 @@ export const SHARED_TIMELINE_DATA = [
     TargetDate: "09-12-2026",
     Groups: "MS",
     RefDoc: "Info Project",
-    description: "Submission of final design and/or survey used for data collection. Only for students carrying out an own contribution project.",
+    description: "Submission of final design and/or survey used for data collection. Only for students carrying out an experimental project.",
     block: "2.0",
     syllabus: "false"
   },
@@ -206,7 +206,7 @@ export const SHARED_TIMELINE_DATA = [
     TargetDate: "09-01-2027",
     Groups: "BT",
     RefDoc: "Info Project",
-    description: "Raw collected data submitted via WueCampus. Only for students carrying out an own contribution project.",
+    description: "Raw collected data submitted via WueCampus. Only for students carrying out an experimental project.",
     block: "4.0",
     syllabus: "false"
   },
