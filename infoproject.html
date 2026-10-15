@@ -202,7 +202,7 @@
       margin-right: 0.5rem;
     }
 
-    details[open] summary::before {
+details[open] > summary::before{
       transform: rotate(180deg); /* Turns the triangle downward when open */
     }
 
@@ -337,7 +337,7 @@
         `,
         trackContent: {
           "BT": `
-                <h2>Bachelor Thesis Project</h2>
+                <h2 id="bt_submission">Bachelor Thesis Project</h2>
                   <p>Your thesis gives you experience with the full research process: engaging with literature, formulating a
                       question, implementing a design, collecting and analyzing data, and presenting your findings.</p>
 
@@ -381,7 +381,7 @@
 
                   <details>
                       <summary>Name:</summary>
-                      <div> State your proposed title. This shouldn't be a question</div>
+                      <div> Your name</div>
                   </details>
                   <details>
                       <summary>Overall topic:</summary>
@@ -543,6 +543,8 @@
 
 
                   <h3 id="bt_ext_proj">Second Project Draft</h3>
+
+                  <!--
                   <p>
                       Your second project draft serves to show us that what started as a rough idea is now coming to life. At this
                       stage, we want to see significant progress and a much higher level of detail regarding your research setup,
@@ -555,23 +557,86 @@
                   </p>
 
                   <div class="todo-box">
-                      <h4>Extended Project Draft Structure & Expectations</h4>
-                      <ul>
-                          <li><strong>Refined Title & Core Hypotheses:</strong> State your updated research question alongside
-                              explicit, testable hypotheses.</li>
-                          <li><strong>Detailed Experimental Design / Identification Strategy:</strong> Detail your specific treatment
-                              arms, control groups, randomization scheme, or econometric identification strategy.</li>
-                          <li><strong>Operationalization & Data Setup:</strong> Specify exact primary/secondary datasets, sample
-                              sizes, variable definitions, and data collection procedures.</li>
-                          <li><strong>Preliminary Results or Analysis Pipeline:</strong> Present any initial exploratory analysis,
-                              pilot data, pre-analysis plans, or detailed specifications of your main regression models.</li>
-                          <li><strong>Critical Assessment & Identified Risks:</strong> Highlight potential practical challenges, power
-                              limitations, or potential threats to identification, along with your planned solutions.</li>
-                      </ul>
-                  </div>
+                      <h4>Extended Project Draft Structure</h4>-->
+
+                   <p>Your extended draft should show how your initial idea has developed into a concrete and feasible research plan. Incorporate previous feedback, update your research question where needed, and explain your design choices precisely. 
+
+                    We want to see significant progress and a much higher level of detail regarding your research setup,
+                        including specific treatment conditions, operationalized variables, and empirical design choices. Being as precise as possible allows us to give you targeted, high-value
+                        feedback ahead of your full write-up. To complete your extended project proposal, please use the draft
+                        template available at <a style="color: #2b6cb0;"
+                            href="https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2FLEO-Teaching%2Fseminar%2Frefs%2Fheads%2Fmain%2FProject_Drafts%2FExtended_Project_Draft_Experiment.docx&wdOrigin=BROWSELINK"
+                            target="_blank">this link</a>. Submission happens via WueCampus.
+                        
+                        
+                      </p>
+
+                      <h4>Extended Project Draft Structure </h4>
+                      <details>
+                          <summary>Name:</summary>
+                          <div>Enter your name.</div>
+                      </details>
+
+                      <details>
+                          <summary>Overall topic:</summary>
+                          <div>State the broader subject of your project. Keep this brief; the specific question belongs in the next section.</div>
+                      </details>
+
+                      <details>
+                          <summary>Concrete Research Question:</summary>
+                          <div>Formulate one focused question ending with a question mark. Make clear what relationship or effect you intend to investigate and ensure your proposed design can address it.</div>
+                      </details>
+
+                      <details>
+                          <summary>Short description of project:</summary>
+                          <div>In no more than 200 words, summarize your question, motivation, proposed approach, and intended contribution. This should give the reader a clear overview of the project.</div>
+                      </details>
+
+                      <details>
+                          <summary>Short Literature review and Motivation:</summary>
+                          <div>Explain what closely related research has established and how your project builds on it. Identify the specific issue you will investigate and why it matters. Connect the studies to your project rather than listing separate summaries.</div>
+                      </details>
+
+                      <details>
+                          <summary>Key references:</summary>
+                          <div>Include up to five closely related papers, covering relevant empirical evidence, theoretical foundations, and methods. For each reference, briefly explain its specific relevance to your project.</div>
+                      </details>
+
+                      <details>
+                          <summary>Theoretical Model and mechanisms:</summary>
+                          <div>Explain the behavioral or economic process behind your predictions. Describe how it should operate in your setting and connect it to the literature. Naming a bias alone is insufficient; a formal mathematical model is only needed if relevant to your approach.</div>
+                      </details>
+
+                      <details>
+                          <summary>Hypotheses:</summary>
+                          <div>State explicit, testable predictions derived from your mechanisms. Identify the outcome and the expected direction of the relationship or difference between conditions. Keep each hypothesis focused and explain its reasoning.</div>
+                      </details>
+
+                      <details>
+                          <summary>Treatment (if present):</summary>
+                          <div>Describe what participants experience in each treatment and comparison condition, what changes, and what remains constant. Explain why the manipulation should affect your proposed mechanism. Consider alternative mechanisms that could also explain an effect and whether your design can distinguish them. If your study has no treatment, state this explicitly.</div>
+                      </details>
+
+                      <details>
+                          <summary>Primary measurement variables:</summary>
+                          <div>Identify your primary outcome, distinguish it from secondary outcomes and other key variables, and specify how and when each is measured. Provide concrete questions, response scales, or behavioral tasks where possible. Explain how these measures allow you to evaluate your hypotheses.</div>
+                      </details>
+
+                      <details>
+                          <summary>Intended implementation procedure:</summary>
+                          <div>Describe the setting or platform, target population, recruitment, and sequence of participant activities. Specify random assignment where applicable, your expected sample size and its rationale, and practical constraints. Briefly indicate how you plan to analyze the data to assess your hypotheses.</div>
+                      </details>
+
+                      <details>
+                          <summary>Your questions for our next meeting:</summary>
+                          <div>Identify unresolved decisions, practical difficulties, or threats to validity. Explain the options or solutions you are considering and where you need feedback.</div>
+                      </details>
+
+                      <p><em>At this stage, we expect a detailed plan; completed results and a fully programmed experiment are not required. Clearly distinguish settled decisions from provisional choices. The complete working prototype is due at the subsequent design proposal stage.</em></p>
+
 
                   <h3 id="bt_survey1">Design Proposal and/or Survey</h3>
-                  <p>At this stage, you should have a working prototype of your survey/experiment, ready to be tested. Although it is
+                  <!--<p>At this stage, you should have a working prototype of your survey/experiment, ready to be tested. Although it is
                       referred to as a ‘draft’, your survey should be complete. The idea is that you present your project during the
                       first presentation, so that you can receive feedback from us and your colleagues. Your experimental project
                       and/or survey should be so well prepared and complete that, if we were to tell you it’s fine, you could start
@@ -581,6 +646,10 @@
                       <div class="callout-title">💡 Serious Testing Hint</div>
                       <p>The quality of your survey/experiment directly impacts the validity and reliability of your findings. Once
                           data collection starts, it is too late to change your design. Ensure thorough testing beforehand!</p>
+                  </div>-->
+
+                  <div class="todo-box">
+                    Sorry, this section is currently not available.
                   </div>
           `,
           "MS": `
@@ -631,7 +700,7 @@
 
                     <details>
                         <summary>Name:</summary>
-                        <div> State your proposed title. This shouldn't be a question</div>
+                        <div> Your name</div>
                     </details>
                     <details>
                         <summary>Overall topic:</summary>
@@ -806,23 +875,89 @@
 
 
                     <h3 id="ms_ext_proj_exp">Extended Project Draft</h3>
-                    <p>
-                        Your second project draft serves to show us that what started as a rough idea is now coming to life. At this
-                        stage, we want to see significant progress and a much higher level of detail regarding your research setup,
-                        including specific treatment conditions, operationalized variables, and empirical design choices. As with
-                        all work submitted to our chair, being as precise as possible allows us to give you targeted, high-value
+
+                    <p>Your extended draft should show how your initial idea has developed into a concrete and feasible research plan. Incorporate previous feedback, update your research question where needed, and explain your design choices precisely. 
+
+                    We want to see significant progress and a much higher level of detail regarding your research setup,
+                        including specific treatment conditions, operationalized variables, and empirical design choices. Being as precise as possible allows us to give you targeted, high-value
                         feedback ahead of your full write-up. To complete your extended project proposal, please use the draft
                         template available at <a style="color: #2b6cb0;"
                             href="https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2FLEO-Teaching%2Fseminar%2Frefs%2Fheads%2Fmain%2FProject_Drafts%2FExtended_Project_Draft_Experiment.docx&wdOrigin=BROWSELINK"
                             target="_blank">this link</a>. Submission happens via WueCampus.
-                    </p>
+                        
+                      </p>
 
+                      <h4>Extended Project Draft Structure</h4>
+                      <details>
+                          <summary>Name:</summary>
+                          <div>Enter your name.</div>
+                      </details>
 
+                      <details>
+                          <summary>Overall topic:</summary>
+                          <div>State the broader subject of your project. Keep this brief; the specific question belongs in the next section.</div>
+                      </details>
+
+                      <details>
+                          <summary>Concrete Research Question:</summary>
+                          <div>Formulate one focused question ending with a question mark. Make clear what relationship or effect you intend to investigate and ensure your proposed design can address it.</div>
+                      </details>
+
+                      <details>
+                          <summary>Short description of project:</summary>
+                          <div>In no more than 200 words, summarize your question, motivation, proposed approach, and intended contribution. This should give the reader a clear overview of the project.</div>
+                      </details>
+
+                      <details>
+                          <summary>Short Literature review and Motivation:</summary>
+                          <div>Explain what closely related research has established and how your project builds on it. Identify the specific issue you will investigate and why it matters. Connect the studies to your project rather than listing separate summaries.</div>
+                      </details>
+
+                      <details>
+                          <summary>Key references:</summary>
+                          <div>Include up to five closely related papers, covering relevant empirical evidence, theoretical foundations, and methods. For each reference, briefly explain its specific relevance to your project.</div>
+                      </details>
+
+                      <details>
+                          <summary>Theoretical Model and mechanisms:</summary>
+                          <div>Explain the behavioral or economic process behind your predictions. Describe how it should operate in your setting and connect it to the literature. Naming a bias alone is insufficient; a formal mathematical model is only needed if relevant to your approach.</div>
+                      </details>
+
+                      <details>
+                          <summary>Hypotheses:</summary>
+                          <div>State explicit, testable predictions derived from your mechanisms. Identify the outcome and the expected direction of the relationship or difference between conditions. Keep each hypothesis focused and explain its reasoning.</div>
+                      </details>
+
+                      <details>
+                          <summary>Treatment (if present):</summary>
+                          <div>Describe what participants experience in each treatment and comparison condition, what changes, and what remains constant. Explain why the manipulation should affect your proposed mechanism. Consider alternative mechanisms that could also explain an effect and whether your design can distinguish them. If your study has no treatment, state this explicitly.</div>
+                      </details>
+
+                      <details>
+                          <summary>Primary measurement variables:</summary>
+                          <div>Identify your primary outcome, distinguish it from secondary outcomes and other key variables, and specify how and when each is measured. Provide concrete questions, response scales, or behavioral tasks where possible. Explain how these measures allow you to evaluate your hypotheses.</div>
+                      </details>
+
+                      <details>
+                          <summary>Intended implementation procedure:</summary>
+                          <div>Describe the setting or platform, target population, recruitment, and sequence of participant activities. Specify random assignment where applicable, your expected sample size and its rationale, and practical constraints. Briefly indicate how you plan to analyze the data to assess your hypotheses.</div>
+                      </details>
+
+                      <details>
+                          <summary>Your questions for our next meeting:</summary>
+                          <div>Identify unresolved decisions, practical difficulties, or threats to validity. Explain the options or solutions you are considering and where you need feedback.</div>
+                      </details>
+
+                      <p><em>At this stage, we expect a detailed plan; completed results and a fully programmed experiment are not required. Clearly distinguish settled decisions from provisional choices. The complete working prototype is due at the subsequent design proposal stage.</em></p>
 
                     <h3 id="ms_survey1">Design proposal</h3>
-                    <div class="todo-box">Include specific requirements for how specific the design proposal should be. survey, data
+                    <!--<div class="todo-box">Include specific requirements for how specific the design proposal should be. survey, data
                         collection plan, treatments, sample size etc. This is right now listes only as a deadline for own
-                        contribution and not for replication</div>
+                        contribution and not for replication</div>-->
+                      
+                    <div class="todo-box">
+                      Sorry, this section is currently not available.
+                    </div>
 
                 </details>
 
@@ -854,13 +989,59 @@
                         remains uncertain.</p>
 
 
-                    <h3 id="ms_ext_proj_rep">Extended Project Draft</h3>
+                    <h3 id="ms_ext_proj_rep">Project Draft</h3>
+
+                    <p>Replication students submit only one project draft. This document prepares your consultation by demonstrating familiarity with the baseline paper and dataset, alongside a concrete plan for replication and extension.</p>
                     <p>
-                        To complete your extended project proposal, please use the draft template available at <a
+                        To complete your project proposal, please use the draft template available at <a
                             style="color: #2b6cb0;"
                             href="https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2FLEO-Teaching%2Fseminar%2Frefs%2Fheads%2Fmain%2FProject_Drafts%2FExtended_Project_Draft_Replication.docx&wdOrigin=BROWSELINK"
                             target="_blank">this link</a>. Submission happens via WueCampus.
                     </p>
+
+                    <h4>Project Draft Structure</h3>
+
+                    <details>
+    <summary>Name:</summary>
+    <div>Enter your name.</div>
+</details>
+
+<details>
+    <summary>Overall topic and replicated paper:</summary>
+    <div>State the topic and provide the full reference of your assigned paper.</div>
+</details>
+
+<details>
+    <summary>Short description of project:</summary>
+    <div>In no more than 200 words, summarize the original research question, approach, and main findings. Specify which part of the study you will replicate.</div>
+</details>
+
+<details>
+    <summary>Variables inspection:</summary>
+    <div>Identify the main outcomes, treatment indicators or explanatory variables, and relevant controls. Explain their meaning, coding, and role in the analysis. Clarify what one observation represents and distinguish essential variables from secondary ones. Use the actual variable names where possible.</div>
+</details>
+
+<details>
+    <summary>Cleaning and first steps:</summary>
+    <div>Describe the checks and preparation completed so far and what remains to be done. Discuss relevant missing values, sample restrictions, duplicates, or merging steps. Specify variables to construct or recode and explain how these decisions follow the original paper. Document your steps in code.</div>
+</details>
+
+<details>
+    <summary>Planned analysis:</summary>
+    <div>Identify the exact tables, figures, panels, or estimates you intend to reproduce. Explain the samples, variables, and methods needed, including weights or clustered standard errors where relevant. Report any initial replication attempts and discrepancies.</div>
+</details>
+
+<details>
+    <summary>Possible Extensions:</summary>
+    <div>Propose a focused addition and explain the question it addresses. State what you would change, why it is informative, and whether the available data support it. Prioritize one feasible, well-motivated extension.</div>
+</details>
+
+<details>
+    <summary>Your questions for our next meeting:</summary>
+    <div>Identify specific difficulties with the data, methods, replication scope, or extension. Explain what you have already tried and where you need feedback.</div>
+</details>
+
+<p><em>The replication does not need to be complete at this stage. We expect you to have inspected the data, begun preparing them, and developed a clear analysis plan. Distinguish completed work from planned steps and unresolved issues.</em></p>
 
 
                 </details>          `,
@@ -883,7 +1064,7 @@
             </p>
 
             <h3 id="bs_ext_proj">Project Draft</h3>
-            <div class="todo-box"> add info on actual template fill out + revise and rephrase teh content here </div>
+            <!--<div class="todo-box"> add info on actual template fill out + revise and rephrase teh content here </div>
             <p>Provide an outline of your work up to now. Use this template to organize your knowledge and ideas, and verify
                 whether you are missing any crucial components.</p>
             <p>Complete the provided tabular template before your individual meeting. Prioritize clear concepts and concise
@@ -896,6 +1077,10 @@
                     href="https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2FLEO-Teaching%2Fseminar%2Frefs%2Fheads%2Fmain%2FProject_Drafts%2FProject_Draft_BSc_Seminar.docx&wdOrigin=BROWSELINK"
                     target="_blank">this link</a>. Submission happens via WueCampus.
             </p>
+            -->
+            <div class="todo-box">
+                    Sorry, this section is currently not available.
+            </div>
           `
         }
       }
