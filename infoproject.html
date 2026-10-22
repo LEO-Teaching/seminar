@@ -131,15 +131,27 @@
       font-size: 0.95rem;
     }
 
+    
     li a {
       color: #60a5fa;
       text-decoration: none;
     }
 
-    li a:hover {
+    a {
+      color: #60a5fa !important; /* Use as a last resort */
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #60a5fa;
       text-decoration: underline;
     }
 
+    li a:hover {
+      color: #60a5fa;
+      text-decoration: underline;
+    }
+    
     .todo-box {
       background: rgba(245, 158, 11, 0.1);
       border-left: 4px solid var(--todo-color);
