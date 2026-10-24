@@ -174,7 +174,8 @@
       <div class="subtitle-track">Official Guidelines &bull; LEO</div>
 
       <p>This sheet contains the main layout and citation requirements for theses and seminar papers at LEO. The
-        presented examples are not complete, and we refer you to the suggested <a href="https://apastyle.apa.org/style-grammar-guidelines/citations" >APA style guide </a> for further information.</p>
+        presented examples are not complete, and we refer you to the suggested <a href="https://apastyle.apa.org/style-grammar-guidelines/citations" >APA style guide</a> for further information.</p>
+        <p><strong>For more information on reading and writing strategies, specific paper structure and paper length requirements, visit <a href="https://leo-teaching.github.io/seminar/infopaper.html" >Paper Guidelines</a></strong></p>
 
       <!-- 1. Formatting & Document Structure -->
       <h2>Formatting</h2>
@@ -198,7 +199,7 @@
       </ul>
 
       <h2>Cover Page</h2>
-      <p>A cover page template is available <a href="#" id="open-track-modal-link">here</a> . While alternative
+      <p>A cover page template is available <a href="#" id="open-track-modal-link">here</a>. While alternative
         templates and formats are permitted, please ensure they include the essential elements specified in the provided
         template.</p>
 
@@ -256,8 +257,8 @@
       <ul>
         <li>The list of references includes all references that have been used in the seminar paper or theses.
           References that have not been used are not included.</li>
-        <li>The formatting should be in a consistent, uniform formatting style.</li>
-        <li>The citation style has guidelines for dealing with various sources such as journal articles, monographs,
+        <li>The references should be presented in a consistent, uniform formatting style.</li>
+        <li><a href="https://apastyle.apa.org/style-grammar-guidelines/references/examples" >APA style guide</a> includes guidelines for dealing with various sources such as journal articles, monographs,
           handbooks, and discussion papers.</li>
       </ul>
 
@@ -278,17 +279,59 @@
     protectCurrentPage(); 
   </script>
   <script>
+    // Global helper function to format BibTeX authors into APA style
+    function formatAuthorsAPA(authorStr) {
+      if (!authorStr) return '';
+      
+      const authors = authorStr.split(/\s+and\s+/i);
+      
+      const formattedAuthors = authors.map(author => {
+        author = author.trim();
+        let surname = '';
+        let given = '';
+        
+        if (author.includes(',')) {
+          const parts = author.split(',');
+          surname = parts[0].trim();
+          given = parts.slice(1).join(',').trim();
+        } else {
+          const parts = author.split(/\s+/);
+          surname = parts.pop();
+          given = parts.join(' ');
+        }
+        
+        let initials = '';
+        if (given) {
+          initials = given
+            .split(/\s+/)
+            .map(part => {
+              return part.split('-').map(sub => sub.charAt(0).toUpperCase() + '.').join('-');
+            })
+            .join(' ');
+        }
+        
+        return initials ? `${surname}, ${initials}` : surname;
+      });
+      
+      if (formattedAuthors.length === 1) {
+        return formattedAuthors[0];
+      } else if (formattedAuthors.length === 2) {
+        return `${formattedAuthors[0]}, & ${formattedAuthors[1]}`;
+      } else {
+        const last = formattedAuthors.pop();
+        return `${formattedAuthors.join(', ')}, & ${last}`;
+      }
+    }
+
     window.addEventListener('DOMContentLoaded', () => {
       // Handle back link track context
       const activeTrack = getActiveTrack();
       if (!activeTrack) return;
-      // Document links mapping (replace with your actual URLs/PDFs)
       const documentLinks = {
         'BS': 'https://raw.githubusercontent.com/leo-teaching/seminar/main/Cover_Template/Cover_Template_BS.pdf',
         'BT': 'https://raw.githubusercontent.com/leo-teaching/seminar/main/Cover_Template/Cover_Template_BT.pdf',
         'MS': 'https://raw.githubusercontent.com/leo-teaching/seminar/main/Cover_Template/Cover_Template_MS.pdf'
       };
-      // Check if the user originally had a track in the URL or localStorage
       const coverLink = document.getElementById('open-track-modal-link');
       if (coverLink) {
         coverLink.href = documentLinks[activeTrack];
@@ -309,8 +352,8 @@
         nociteKeys.forEach(key => {
           const ref = BIBLIOGRAPHY[key];
           if (ref) {
-            // Formatting output similar to APA style based on available fields
-            let entry = `${ref.author} (${ref.year}). <strong>${ref.title}</strong>.`;
+            const authorsFormatted = formatAuthorsAPA(ref.author);
+            let entry = `${authorsFormatted} (${ref.year}). <strong>${ref.title}</strong>.`;
             if (ref.journal) {
               entry += ` <em>${ref.journal}</em>.`;
             }
@@ -354,7 +397,8 @@
           cat.keys.forEach(key => {
             const ref = BIBLIOGRAPHY[key];
             if (ref) {
-              let entry = `${ref.author} (${ref.year}). <strong>${ref.title}</strong>.`;
+              const authorsFormatted = formatAuthorsAPA(ref.author);
+              let entry = `${authorsFormatted} (${ref.year}). <strong>${ref.title}</strong>.`;
               if (ref.journal) {
                 entry += ` <em>${ref.journal}</em>.`;
               }

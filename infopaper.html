@@ -187,6 +187,78 @@
       margin-bottom: 0;
       color: #e2e8f0;
     }
+
+        details {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 2pt;
+      margin-bottom: 0.5rem;
+      transition: border-color 0.2s;
+    }
+
+    details:hover {
+      border-color: #60a5fa;
+      /* highlights the border slightly on hover */
+    }
+
+    summary {
+      cursor: pointer;
+      padding: 0.25rem 0.25rem;
+      font-weight: 600;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      /* removes default browser arrow if you want it cleaner */
+    }
+
+    summary::before {
+      content: "▼";
+      font-size: 0.75rem;
+      color: #93c5fd;
+      transition: transform 0.2s ease;
+      margin-right: 0.5rem;
+    }
+
+    details[open] > summary::before{
+      transform: rotate(180deg); /* Turns the triangle downward when open */
+    }
+
+    details>div {
+      margin-left: 1.5rem;
+      margin-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-muted);
+    }
+
+
+    .collapse-section {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        margin-bottom: 1rem;
+        padding: 0.5rem
+}
+
+    .collapse-header {
+    cursor: pointer;
+    padding: 0.5rem;
+    user-select: none;
+    }
+
+    /* Optional: removes margins from h3 inside summary so it aligns nicely */
+    .collapse-header h4 {
+    margin: 0;
+    display: inline; 
+    }
+    .collapse-header h3 {
+    margin: 0;
+    display: inline; 
+    }
+
+    .collapse-content {
+    padding: 0 0rem 0rem 0rem;
+    }
   </style>
 </head>
 
@@ -225,8 +297,11 @@
           <p>We also remind you that other information is available on WueCampus in the form of slides from our Intro Meeting on Reading and Writing. </p>
 
           <h2>Literature</h2>
-          <p>
-            Choose sources critically
+
+          <details class="collapse-section" >
+    <summary class="collapse-header">Choose sources critically</summary>
+                  <div class="collapse-content">
+          <p>    
             <ul>
           <li>Journals: Leading economics journals and established field journals are useful starting points. </li>
           <li>Authors: Look for expertise and related publications. Reputation alone does not guarantee a convincing paper.</li>
@@ -234,7 +309,13 @@
           <li>Evidence: Always assess the paper’s methods, conclusions, and limitations yourself. Check whether a working paper has a newer or published version.</li>
           </ul>
           </p>
-          <p>Read and organize efficiently
+          </div>
+          </details>
+          <details class="collapse-section" >
+    <summary class="collapse-header">Read and organize efficiently</summary>
+                  <div class="collapse-content">
+          
+          <p>
           <ul>
           <li>Start with the abstract, introduction, and conclusion, then, only if the paper aligns with your topic and research question, study the relevant methods, tables, and results. Don't cite studies of which you only read the abtsract.</li>
           <li>Highlight selectively and take notes in your own words: question, method, findings, mechanism, limitations, and relevance to your project. Record page numbers for useful passages, distinguish quotations from your own ideas, and add citations while writing.</li>
@@ -243,27 +324,73 @@
           </ul>
            <p>Prioritize a focused set of papers you understand well over a long list of loosely related references. Remember: you are responsible for your citations and you are expected to be proficient in each paper you mention.</p>
           </p>
-          <h2>Helpful Resources</h2>
-          <h3>Writing and Research</h3>
-          <ul>
-            <li>McCloskey, D. N. (1998). <i>The rhetoric of economics.</i> University of Wisconsin Press.</li>
-            <li>Zinsser, W. (2012). <i>On writing well.</i> HarperCollins.</li>
-            <li><a href=https://www.phrasebank.manchester.ac.uk/" target="_blank">Academic Phrasebank | The University of Manchester</a>: A collection of ready-to-use phrases and sentence templates to help write formal academic papers.</li>
-            <li><a href="https://www.uni-wuerzburg.de/schreibzentrum/" target="_blank">Schreibzentrum - Schreibzentrum</a>: The University Writing Center provides personalized consultations, workshops, and peer-to-peer support to help students improve their academic writing style and structure.</li>
-            <li><a href="https://www.bibliothek.uni-wuerzburg.de/lernen/kurse-module-e-learning/" target="_blank">Kurse, Module, E-Learning - Universitätsbibliothek</a>: The University Library offers specialized training on literature research, citation management (like Citavi or Zotero), and strategies to avoid plagiarism.</li>
-            <li><a href="https://guides.lib.umich.edu/c.php?g=1114879&p=8128983" target="_blank">University of Michigan Library | Microsoft Word for Dissertations</a>: A complete guide on how to use Word tools efficiently (captions, figures, cross references, contents, page numbers, appendices).</li>
-            <li><a href="https://support.microsoft.com/en-us/office/create-a-bibliography-citations-and-references-17686589-4824-4940-9c69-342c289fa2a5" target="_blank">Support Microsoft Office: Create a bibliography, citations and references in Word</a></li>
-            <li><a href="https://blog.orvium.io/latex-over-word/" target="_blank">Why use LaTeX over Word?</a> and <a href="https://www.underleaf.ai/blog/latex-vs-word" target="_blank">Underleaf.ai | LaTeX vs Word</a>: Quick guides on why you might want to consider LaTeX.</li>
-            <li><a href="https://openwuecampus.uni-wuerzburg.de/moodle/enrol/index.php?id=13" target="_blank">LaTeX | OpenWueCampus</a>: A dedicated e-learning resource for learning LaTeX.</li>
-            <li><a href="https://www.zotero.org/" target="_blank">Zotero</a>: A free, easy-to-use tool to help you collect, organize, annotate, cite, and share research.</li>
-            <li><a href="https://www.sjsu.edu/writingcenter/docs/handouts/Editing-Creating%20Reader-Friendly%20Papers%20and%20Essays.pdf" target="_blank" title="SJSU Guide on Creating Reader-Friendly Papers and Essays">SJSU Reader-Friendly Papers Guide</a>: Strategies for organizing essays to maximize audience comprehension and structural flow.</li>
-            <li><a href="https://www.sjsu.edu/writingcenter/docs/handouts/Graphic%20Organizers%20for%20Research%20Papers.pdf" target="_blank" title="SJSU Graphic Organizers for Research Papers Handout">SJSU Graphic Organizers Handout</a>: Visual templates and structural maps to organize research arguments and evidence.</li>
-            <li><a href="https://www.sjsu.edu/writingcenter/docs/handouts/Research%20Paper%20Writing%20Process-Updated.pdf" target="_blank" title="SJSU Research Paper Writing Process Overview">SJSU Research Writing Process</a>: Step-by-step methodology for planning, drafting, and revising academic papers.</li>
-            <li><a href="https://www.sjsu.edu/writingcenter/docs/handouts/Visual%20Tools%20in%20Research%20Writing.pdf" target="_blank" title="SJSU Visual Tools in Research Writing Manual">SJSU Visual Tools Manual</a>: Guide on employing diagrams and visual layouts to structure writing logic.</li>
-            <li><a href="https://www.sjsu.edu/writingcenter/docs/handouts/Academic%20Language.V2.pdf" target="_blank" title="SJSU Academic Language Guide">SJSU Academic Language Guide</a>: Standards for maintaining a formal, precise, and professional tone in scholarly writing.</li>
-            <li><a href="https://www.sjsu.edu/writingcenter/docs/handouts/Editing-Creating%20Reader-Friendly%20Paragraphs.pdf" target="_blank" title="SJSU Guide to Editing Reader-Friendly Paragraphs">SJSU Reader-Friendly Paragraphs</a>: Techniques for paragraph cohesion, topic sentences, and narrative flow.</li>
-            <li><a href="https://apastyle.apa.org/style-grammar-guidelines/tables-figures" target="_blank" title="Official APA Style Guidelines for Tables and Figures">APA Tables and Figures Standards</a>: Guidelines for formatting visual data, captions, numbers, and explanatory notes.</li>
-          </ul>
+          </div>
+          </details>
+          <section class="helpful-resources">
+  <h2>Helpful Resources</h2>
+
+  <!-- 1. Style, Tone & Writing Fundamentals -->
+  <details class="collapse-section" >
+    <summary class="collapse-header">Style, Tone & Writing Fundamentals</summary>
+                  <div class="collapse-content">
+    <ul>
+      <li>McCloskey, D. N. (1998). <i>The rhetoric of economics.</i> University of Wisconsin Press.</li>
+      <li>Zinsser, W. (2012). <i>On writing well.</i> HarperCollins.</li>
+      <li><a href="https://www.phrasebank.manchester.ac.uk/" target="_blank" >Academic Phrasebank | The University of Manchester</a>: A collection of ready-to-use phrases and sentence templates to help write formal academic papers.</li>
+      <li><a href="https://www.sjsu.edu/writingcenter/docs/handouts/Academic%20Language.V2.pdf" target="_blank"  title="SJSU Academic Language Guide">SJSU Academic Language Guide</a>: Standards for maintaining a formal, precise, and professional tone in scholarly writing.</li>
+    </ul>
+  </div>
+              </details>
+
+  <!-- 2. Paper Planning, Process & Visual Mapping -->
+  <details class="collapse-section">
+    <summary class="collapse-header">Paper Planning, Process & Visual Mapping</summary>
+                  <div class="collapse-content">
+    <ul>
+      <li><a href="https://www.sjsu.edu/writingcenter/docs/handouts/Research%20Paper%20Writing%20Process-Updated.pdf" target="_blank"  title="SJSU Research Paper Writing Process Overview">SJSU Research Writing Process</a>: Step-by-step methodology for planning, drafting, and revising academic papers.</li>
+      <li><a href="https://www.sjsu.edu/writingcenter/docs/handouts/Graphic%20Organizers%20for%20Research%20Papers.pdf" target="_blank"  title="SJSU Graphic Organizers for Research Papers Handout">SJSU Graphic Organizers Handout</a>: Visual templates and structural maps to organize research arguments and evidence.</li>
+      <li><a href="https://www.sjsu.edu/writingcenter/docs/handouts/Visual%20Tools%20in%20Research%20Writing.pdf" target="_blank"  title="SJSU Visual Tools in Research Writing Manual">SJSU Visual Tools Manual</a>: Guide on employing diagrams and visual layouts to structure writing logic.</li>
+    </ul>
+  </div>
+              </details>
+
+  <!-- 3. Structuring, Formatting & Readability -->
+  <details class="collapse-section">
+    <summary class="collapse-header">Structuring, Formatting & Readability</summary>
+                  <div class="collapse-content">
+    <ul>
+      <li><a href="https://www.sjsu.edu/writingcenter/docs/handouts/Editing-Creating%20Reader-Friendly%20Papers%20and%20Essays.pdf" target="_blank"  title="SJSU Guide on Creating Reader-Friendly Papers and Essays">SJSU Reader-Friendly Papers Guide</a>: Strategies for organizing essays to maximize audience comprehension and structural flow.</li>
+      <li><a href="https://www.sjsu.edu/writingcenter/docs/handouts/Editing-Creating%20Reader-Friendly%20Paragraphs.pdf" target="_blank"  title="SJSU Guide to Editing Reader-Friendly Paragraphs">SJSU Reader-Friendly Paragraphs</a>: Techniques for paragraph cohesion, topic sentences, and narrative flow.</li>
+      <li><a href="https://apastyle.apa.org/style-grammar-guidelines/tables-figures" target="_blank"  title="Official APA Style Guidelines for Tables and Figures">APA Tables and Figures Standards</a>: Guidelines for formatting visual data, captions, numbers, and explanatory notes.</li>
+    </ul>
+  </div>
+              </details>
+
+  <!-- 4. Software & Reference Management -->
+  <details class="collapse-section">
+    <summary class="collapse-header">Softwares & Reference Management</summary>
+                  <div class="collapse-content">
+    <ul>
+      <li><a href="https://guides.lib.umich.edu/c.php?g=1114879&p=8128983" target="_blank" >University of Michigan Library | Microsoft Word for Dissertations</a>: A complete guide on how to use Word tools efficiently (captions, figures, cross references, contents, page numbers, appendices).</li>
+      <li><a href="https://support.microsoft.com/en-us/office/create-a-bibliography-citations-and-references-17686589-4824-4940-9c69-342c289fa2a5" target="_blank" >Support Microsoft Office: Create a bibliography, citations and references in Word</a></li>
+      <li><a href="https://blog.orvium.io/latex-over-word/" target="_blank" >Why use LaTeX over Word?</a> and <a href="https://www.underleaf.ai/blog/latex-vs-word" target="_blank" >Underleaf.ai | LaTeX vs Word</a>: Quick guides on why you might want to consider LaTeX.</li>
+      <li><a href="https://openwuecampus.uni-wuerzburg.de/moodle/enrol/index.php?id=13" target="_blank" >LaTeX | OpenWueCampus</a>: A dedicated e-learning resource for learning LaTeX.</li>
+      <li><a href="https://www.zotero.org/" target="_blank" >Zotero</a>: A free, easy-to-use tool to help you collect, organize, annotate, cite, and share research.</li>
+    </ul>
+  </div>
+              </details>
+
+  <!-- On-Campus Support & Library Training -->
+  <details class="collapse-section">
+    <summary class="collapse-header">On-Campus Support & Library Training</summary>
+                  <div class="collapse-content">
+    <ul>
+      <li><a href="https://www.uni-wuerzburg.de/schreibzentrum/" target="_blank" >Schreibzentrum - Schreibzentrum</a>: The University Writing Center provides personalized consultations, workshops, and peer-to-peer support to help students improve their academic writing style and structure.</li>
+      <li><a href="https://www.bibliothek.uni-wuerzburg.de/lernen/kurse-module-e-learning/" target="_blank" >Kurse, Module, E-Learning - Universitätsbibliothek</a>: The University Library offers specialized training on literature research, citation management (like Citavi or Zotero), and strategies to avoid plagiarism.</li>
+    </ul>
+  </div>
+              </details>
+</section>
 
           
         `,
@@ -283,7 +410,8 @@
           </div>
             
             <h3 id="bt_submission">Final Paper</h3>
-            <p>Your paper should be a maximum of 25 pages long, including the title page, abstract, table of contents, main text, tables, figures, references, and appendices. Only AI-related declarations and the <a class="custom-link" style="color: #2b6cb0;" href="https://www.uni-wuerzburg.de/fileadmin/33120300/Pruefungsamt/Formulare/Allgemeine_Formulare/Versicherung_zur_Leistungserbringung/20231127_Versicherung_zur_selbststaendigen_Leistungserbringung.pdf">Versicherung zur selbstständigen Leistungserbringung</a> are excluded from this count.</p>
+            <div><p>
+            <strong style="color:white">Your paper should be a maximum of 25 pages long, including the title page, abstract, table of contents, main text, tables, figures, references, and appendices.</strong> Only AI-related declarations and the <a class="custom-link" style="color: #2b6cb0;" href="https://www.uni-wuerzburg.de/fileadmin/33120300/Pruefungsamt/Formulare/Allgemeine_Formulare/Versicherung_zur_Leistungserbringung/20231127_Versicherung_zur_selbststaendigen_Leistungserbringung.pdf">Versicherung zur selbstständigen Leistungserbringung</a> are excluded from this count.</p></div>
             
             <h3 id="bt_submission">Structure</h3>
             <p> The following structure serves only as reference. There is no one-fits-all structure that will work for every topic and type of project, so feel free to use different chapter subdivisions and page numbers.
@@ -343,7 +471,7 @@
             <h2>Master Seminar Guidelines</h2>
             <p>Your Master Seminar paper should demonstrate your ability to conduct independent research and present your findings in a structured and coherent manner.</p>
              <h3 id="ms_submission">Final Paper</h3>
-            <p>Your paper should be a maximum of 20 pages long, including the title page, abstract, table of contents, main text, tables, figures, references, and appendices. Only AI-related declarations and the Versicherung zur selbstständigen Leistungserbringung are excluded from this count.</p>
+            <p> <strong style="color:white">Your paper should be a maximum of 20 pages long, including the title page, abstract, table of contents, main text, tables, figures, references, and appendices.</strong> Only AI-related declarations and the <a class="custom-link" style="color: #2b6cb0;" href="https://www.uni-wuerzburg.de/fileadmin/33120300/Pruefungsamt/Formulare/Allgemeine_Formulare/Versicherung_zur_Leistungserbringung/20231127_Versicherung_zur_selbststaendigen_Leistungserbringung.pdf">Versicherung zur selbstständigen Leistungserbringung</a> are excluded from this count.</p>
             <h3>Structure</h3>
               <p>The following structure serves only as reference. There is no one-fits-all structure that will work for every topic and type of project, so feel free to use different section subdivisions and page numbers.</p>
               <div>
@@ -404,57 +532,54 @@
           "BS": `
             <h2>Bachelor Seminar Guidelines</h2>
             <p>Your Bachelor Seminar paper introduces you to academic writing fundamentals and should demonstrate your ability to conduct independent research and present your findings in a structured and coherent manner.</p>
-            <div class="todo-box">Include specific requirements for the paper here, e.g., structure, page budgets, table of contents, and abstract expectations.</div>
             
-            <h3 id="bs_submission">Core Elements Required</h3>
-            <p>When revising your paper, make sure that it includes all these core elements:</p>
-            <ul>
-              <li>Motivation of the research question.</li>
-              <li>Thorough discussion of the baseline paper.</li>
-              <li>Thorough discussion of alternative theoretical/behavioral mechanisms.</li>
-              <li>A proposal of a experimental intervention to validate the suggested mechanism.</li>
-            </ul>
-            <p>Your paper should be a maximum of 15 pages long, including the title page, table of contents, main text, tables, figures, references, and appendices. Only AI-related declarations and the Versicherung zur selbstständigen Leistungserbringung are excluded from this count.</p>
+            <h3 id="bs_submission">Paper Structure and Core Elements</h3>  
+            
+            <p>Your paper should develop a clear argument connecting a policy or management problem, existing evidence, behavioural mechanisms, and a proposed experimental intervention.</p>
 
-           <!-- <h3>Bachelor Seminar Paper Structure</h3>
-                <div>
-                <p><em>Note: An abstract is not required for this 15-page format. Start directly with the introduction on page 1.</em></p>
+            <p><strong style="color:white" >Your paper should be a maximum of 15 pages long, including the title page, table of contents, main text, tables, figures, references, and appendices.</strong> Only AI-related declarations and the <a class="custom-link" style="color: #2b6cb0;" href="https://www.uni-wuerzburg.de/fileadmin/33120300/Pruefungsamt/Formulare/Allgemeine_Formulare/Versicherung_zur_Leistungserbringung/20231127_Versicherung_zur_selbststaendigen_Leistungserbringung.pdf">Versicherung zur selbstständigen Leistungserbringung</a> are excluded from this count.</p>
 
-                <h4>1. Introduction (Approx. 2 Pages)</h4>
+            <p>The following structure represents a suggested guide, rather than a fixed chapter outline. You may combine, reorganize or rename sections, provided all core elements are addressed.</p>
+
+                <h4>1. Introduction (Approx. 1-2 Pages)</h4>
                 <ul>
-                    <li><strong>Motivation & Context:</strong> Introduce the real-world economic puzzle or problem.</li>
-                    <li><strong>The Base Paper:</strong> Briefly state the foundational study being analyzed, its primary question, and its core findings.</li>
-                    <li><strong>The Research Gap:</strong> Explain why the existing mechanism leaves open questions or why an alternative mechanism is plausible.</li>
-                    <li><strong>Roadmap:</strong> Outline the structure of your paper.</li>
+                    <li><strong>Motivation & relevance:</strong> Introduce the policy or management problem and explain why it matters.</li>
+                    <li><strong>Guiding Question:</strong> State the question guiding your seminar paper..</li>
+                    <li><strong>Contribution:</strong> Briefly explain how your discussion builds on the baseline paper and introduce your proposed contribution.</li>
+                    <li><strong>Paper Structure:</strong> Provide a roadmap of the subsequent sections.</li>
                 </ul>
 
-                <h4>2. Literature Review & Base Paper Analysis (Approx. 3–4 Pages)</h4>
+                <h4>2. Baseline Paper and Related Literature (Approx. 2-3 Pages)</h4>
                 <ul>
-                    <li><strong>Contextualization:</strong> Position the base paper within the broader economic or behavioral literature.</li>
-                    <li><strong>Methodology & Data:</strong> Detailed breakdown of the base paper's empirical strategy, data, and identification.</li>
-                    <li><strong>Original Mechanism:</strong> Critical evaluation of how the authors claim their results occur.</li>
+                    <li><strong>Study Overview:</strong> Explain the baseline paper’s research question, setting, method, and main findings.</li>
+                    <li><strong>Supporting Evidence:</strong> Describe the key comparisons or evidence supporting its conclusions.</li>
+                    <li><strong>Critical Assessment:</strong> Discuss its strengths and relevant limitations.</li>
+                    <li><strong>Related Literature:</strong> Connect it to a small selection of closely related studies that help explain the findings or motivate your proposal.</li>
                 </ul>
 
-                <h4>3. Critique & Proposed New Mechanism (Approx. 3–4 Pages)</h4>
+                <h4>3. Mechanisms and Alternative Explanations (Approx. 2-3 Pages)</h4>
                 <ul>
-                    <li><strong>Limitations of Current Explanations:</strong> Highlight where the original mechanism faces confounding factors or gaps.</li>
-                    <li><strong>The Alternative Hypothesis:</strong> Formulate your clear, testable new mechanism and define the theoretical rationale explaining why this new channel matters.</li>
+                    <li><strong>Baseline Mechanisms:</strong> Explain the theoretical or behavioural mechanisms proposed in the baseline paper and how they operate in its setting.</li>
+                    <li><strong>Alternative Mechanisms:</strong> Develop at least one alternative or additional mechanism that the paper does not adequately consider or test. Support your reasoning with relevant literature.</li>
+                    <li><strong>Distinguishing Predictions: </strong> Discuss whether these explanations predict similar behaviour and what evidence could help distinguish them.</li>
                 </ul>
 
-                <h4>4. Proposed Experimental Design (Approx. 4–5 Pages)</h4>
+                <h4>4. Proposed Experimental Intervention (Approx. 4-5 Pages)</h4>
                 <ul>
-                    <li><strong>Research Design:</strong> Outline how you will test your proposed mechanism (e.g., lab, online survey, or field experiment).</li>
-                    <li><strong>Treatments & Randomization:</strong> Detail the treatment arms, control groups, and how you isolate your specific mechanism.</li>
-                    <li><strong>Data, Sample, & Expected Patterns:</strong> Describe your target sample, data collection strategy, and the statistical patterns that would confirm your hypothesis.</li>
+                    <li><strong>Research Question & Mechanism: </strong> State the specific research question and mechanism your experiment would investigate. Precise whether you are investigating the original policy problem or applying the mechanism to a different, clearly connected setting.</li>
+                    <li><strong>Experimental Design:</strong> Describe the target population, treatment and comparison conditions, random assignment, and basic procedure.</li>
+                    <li><strong>Outcomes & Hypotheses:</strong> Specify the primary outcome, how it would be measured, and your hypotheses.</li>
+                    <li><strong>Mechanism Test & Limitations: </strong> Explain how the experimental comparison would test your mechanism, whether alternative explanations remain, and the main limitations or practical challenges.</li>
                 </ul>
 
-                <h4>5. Conclusion & Discussion (Approx. 1–2 Pages)</h4>
+                <h4>5. Discussion and Conclusion (Approx. 1-2 Pages)</h4>
                 <ul>
-                    <li><strong>Summary of Contribution:</strong> Reiterate what your proposed mechanism adds to the literature.</li>
-                    <li><strong>Broader Implications:</strong> Discuss potential policy or management takeaways.</li>
-                    <li><strong>Feasibility & Limitations:</strong> Acknowledge practical challenges or boundary conditions of your proposed design.</li>
+                    <li><strong>Synthesis:</strong> Bring together the baseline evidence, your mechanism discussion, and the contribution of your proposed experiment.</li>
+                    <li><strong>Practical Implications: </strong> Explain what could be learned from the experiment and discuss relevant policy or management implications.</li>
+                    <li><strong>Concluding Answer:</strong> End with a concise answer to the question guiding your seminar paper, acknowledging the limits of the available evidence.</li>
                 </ul>
-                </div> -->
+                <h4>References</h4>
+                <h4>Appendix</h4>
           `
         }
       }

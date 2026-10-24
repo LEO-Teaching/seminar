@@ -184,8 +184,8 @@
     }
 
     details {
-  background: var(--card-bg);
-  border: 1px solid var(--border);
+      background: var(--card-bg);
+      border: 1px solid var(--border);
       border-radius: 2pt;
       margin-bottom: 0.5rem;
       transition: border-color 0.2s;
@@ -214,7 +214,7 @@
       margin-right: 0.5rem;
     }
 
-details[open] > summary::before{
+    details[open] > summary::before{
       transform: rotate(180deg); /* Turns the triangle downward when open */
     }
 
@@ -228,32 +228,32 @@ details[open] > summary::before{
 
 
     .collapse-section {
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  margin-bottom: 1rem;
-  padding: 0.5rem
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        margin-bottom: 1rem;
+        padding: 0.5rem
 }
 
-.collapse-header {
-  cursor: pointer;
-  padding: 0.5rem;
-  user-select: none;
-}
+    .collapse-header {
+    cursor: pointer;
+    padding: 0.5rem;
+    user-select: none;
+    }
 
-/* Optional: removes margins from h3 inside summary so it aligns nicely */
-.collapse-header h4 {
-  margin: 0;
-  display: inline; 
-}
-.collapse-header h3 {
-  margin: 0;
-  display: inline; 
-}
+    /* Optional: removes margins from h3 inside summary so it aligns nicely */
+    .collapse-header h4 {
+    margin: 0;
+    display: inline; 
+    }
+    .collapse-header h3 {
+    margin: 0;
+    display: inline; 
+    }
 
-.collapse-content {
-  padding: 0 0rem 0rem 0rem;
-}
+    .collapse-content {
+    padding: 0 0rem 0rem 0rem;
+    }
   </style>
 </head>
 
@@ -1121,6 +1121,50 @@ details[open] > summary::before{
         docBody.innerHTML = renderedHTML;
       }
 
+
+      function formatAuthorsAPA(authorStr) {
+      if (!authorStr) return '';
+      
+      const authors = authorStr.split(/\s+and\s+/i);
+      
+      const formattedAuthors = authors.map(author => {
+        author = author.trim();
+        let surname = '';
+        let given = '';
+        
+        if (author.includes(',')) {
+          const parts = author.split(',');
+          surname = parts[0].trim();
+          given = parts.slice(1).join(',').trim();
+        } else {
+          const parts = author.split(/\s+/);
+          surname = parts.pop();
+          given = parts.join(' ');
+        }
+        
+        let initials = '';
+        if (given) {
+          initials = given
+            .split(/\s+/)
+            .map(part => {
+              return part.split('-').map(sub => sub.charAt(0).toUpperCase() + '.').join('-');
+            })
+            .join(' ');
+        }
+        
+        return initials ? `${surname}, ${initials}` : surname;
+      });
+      
+      if (formattedAuthors.length === 1) {
+        return formattedAuthors[0];
+      } else if (formattedAuthors.length === 2) {
+        return `${formattedAuthors[0]}, & ${formattedAuthors[1]}`;
+      } else {
+        const last = formattedAuthors.pop();
+        return `${formattedAuthors.join(', ')}, & ${last}`;
+      }
+    }
+
       // Dynamically populate methodology list from references.js
       const methodologyKeys = ['haaland2023designing', 'stantcheva2023run'];
       const listContainer = document.getElementById('dynamic-methodology-list');
@@ -1129,7 +1173,8 @@ details[open] > summary::before{
         methodologyKeys.forEach(key => {
           const ref = BIBLIOGRAPHY[key];
           if (ref) {
-            listHTML += `<li><strong>${ref.author} (${ref.year}):</strong> ${ref.title}</li>`;
+            const authorsFormatted = formatAuthorsAPA(ref.author);
+            listHTML += `<li><strong>${authorsFormatted} (${ref.year}):</strong> ${ref.title}</li>`;
           }
         });
         listContainer.innerHTML = listHTML;
