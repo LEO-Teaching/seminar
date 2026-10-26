@@ -12,13 +12,13 @@ window.RESOURCES = [
     ],
     "releaseDate": {
       "BS": "2026-10-01T09:00:00",
-      "BT": "2026-10-20T09:00:00",
-      "MS": "2026-11-01T09:00:00"
+      "BT": "2026-10-01T09:00:00",
+      "MS": "2026-10-01T09:00:00"
     },
     "devOnly": {
-      "BS": true,
-      "BT": true,
-      "MS": true
+      "BS": false,
+      "BT": false,
+      "MS": false
     }
   },
   {
