@@ -60,7 +60,7 @@ window.RESOURCES = [
       "MS": "2026-10-15T09:00:00"
     },
     "devOnly": {
-      "BS": true,
+      "BS": false,
       "BT": false,
       "MS": false
     }
