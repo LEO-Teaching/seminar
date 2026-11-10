@@ -15,7 +15,7 @@
       --card-bg: #1e293b;
       --text: #f8fafc;
       --text-muted: #c2d0e5;
-      --border: #334155;
+      --border: #2a384b;
       --primary: #3b82f6;
       --primary-glow: rgba(59, 130, 246, 0.15);
       --todo-color: #f59e0b;
@@ -185,7 +185,7 @@
 
     details {
       background: var(--card-bg);
-      border: 1px solid var(--border);
+      border: 0.5px solid var(--border);
       border-radius: 2pt;
       margin-bottom: 0.5rem;
       transition: border-color 0.2s;
@@ -220,6 +220,7 @@
 
     details>div {
       margin-left: 1.5rem;
+      margin-right: 0.5rem;
       margin-top: 0.5rem;
       padding-bottom: 0.5rem;
       margin-bottom: 0.5rem;
@@ -232,7 +233,7 @@
         border: 1px solid var(--border);
         border-radius: 8px;
         margin-bottom: 1rem;
-        padding: 0.5rem
+        padding: 0.5rem;
 }
 
     .collapse-header {
@@ -245,10 +246,12 @@
     .collapse-header h4 {
     margin: 0;
     display: inline; 
+    border: none;
     }
     .collapse-header h3 {
     margin: 0;
     display: inline; 
+    border: none;
     }
 
     .collapse-content {
@@ -262,7 +265,7 @@
   <div class="container">
     <div class="header-bar">
       <div>
-        <span style="font-size: 0.8rem; color: var(--primary); font-weight: 700; text-transform: uppercase;">Official
+        <span style="font-size: 0.8rem; color: var(--primary); font-weight: 700; text-transform: uppercase;">
           Project Guideline</span>
       </div>
       <div class="track-selector"></div>
@@ -291,7 +294,7 @@
         commonContent: `
              <p>This project is a crucial component of your academic journey, providing you with the opportunity to apply
                   theoretical knowledge to your own research project. This document outlines the expectations and requirements for
-                  your work and includes some useful tipps on how to approach the project.</p>
+                  your work and includes some useful tips on how to approach the project.</p>
 
               <h2>Helpful Resources</h2>
 
@@ -306,11 +309,12 @@
                   </div>
               </details>
 
-              <details class="collapse-section">
-                  <summary class="collapse-header">
-                      <h4>Survey Platforms</h4>
+              <details class="collapse-section" id="survey-section">
+                <summary class="collapse-header">
+                    <h4>Surveys and Experiments</h4>
                   </summary>
                   <div class="collapse-content">
+                    <p style="color:#ffffff"><strong> Survey platforms </strong> </p>
                       <p>If you are planning to use a "simple" survey for data collection, you can use general survey platforms
                           (Google Forms, Microsoft Forms, etc.). If you are implementing an online survey experiment requiring
                           randomization or treatments, consider:</p>
@@ -322,6 +326,80 @@
                       <p>Make sure your chosen platform supports features like completion time tracking, single-page completion
                           rates, and randomized treatment assignment, depending on what you need for your specific project.</p>
                   </div>
+
+                  <div>
+                     <p style="color:#ffffff"><strong>How to design surveys and experiments</strong> </p>
+  <p>Before finalizing your survey-experiment, explore these practical challenges and design considerations:</p>
+
+  <details>
+    <summary >Survey length vs. attrition</summary>
+    <div>People have short attention spans. If you pitch a 30-minute survey, they'll either drop out midway or click through mindlessly just to get it over with. You have to strike a balance between collecting deep data and respecting your respondents' time.</div>
+  </details>
+
+  <details >
+    <summary >Analysis mapping</summary>
+    <div>Never write questions just "to see what happens." You should be able to write down your exact regression and variables before you even launch. Knowing how each question maps to your hypothesis keeps you from data fishing and ensures your survey actually answers your question.</div>
+  </details>
+
+  <details >
+    <summary >Question order and sequencing</summary>
+    <div>The order of your questions acts like a lens that colors everything that follows. If you place a certain topic or question early on, it primes the respondent's mind and inadvertently alters how they interpret everything after it. You need to map out a sequence that prevents your earlier items from contaminating your later answers.</div>
+  </details>
+
+  <details >
+    <summary >Target population and external validity</summary>
+    <div>Your sample needs to match your research question. Asking specialized or demographic-specific questions to the wrong audience wrecks your external validity. Make sure the questions actually fit your respondents' real life experiences and knowledge base.</div>
+  </details>
+
+  <details >
+    <summary >Treatment isolation</summary>
+    <div>An information treatment has to isolate a single mechanism. If your text prompt accidentally combines multiple facts, emotional tones, or details at once, you’ll never know which part actually caused the shift in beliefs. Keep it clean and focused.</div>
+  </details>
+
+  <details >
+    <summary >Neutrality</summary>
+    <div>When you provide facts or statistics as treatments, they need to be completely objective. If your wording subtly slants the issue or nudges the respondent toward a certain conclusion, you're introducing bias instead of measuring beliefs.</div>
+  </details>
+
+  <details >
+    <summary >Experimenter demand effects and social image bias</summary>
+    <div>Smart respondents often try to guess what you're studying and answer to please you (demand effects), or they answer based on what sounds socially acceptable rather than what they actually think (social image bias). You have to design your flow to keep your true hypothesis hidden and let people feel safe giving honest answers.</div>
+  </details>
+
+  <details >
+    <summary >Sampling strategy</summary>
+    <div>Deciding whether to use nationally representative panels, specialized target groups, or specific demographic oversampling depends entirely on your design. You have to watch out for non-response bias and think about how your recruitment channel affects who actually shows up.</div>
+  </details>
+
+  <details >
+    <summary >Attention checks</summary>
+    <div>Online respondents and bots can rush through or click randomly just to grab the reward. You should weave in simple attention screeners and track things like completion times to filter out garbage data without introducing arbitrary bias.</div>
+  </details>
+
+  <details >
+    <summary >Recruitment and landing pages</summary>
+    <div>Your initial invite and landing page set expectations. If you reveal your exact hypothesis upfront, you'll trigger self-selection bias—meaning only people with extreme prior opinions will choose to participate. Keep your recruitment framing neutral.</div>
+  </details>
+
+  <details >
+    <summary >Sample attrition and post-stratification weighting</summary>
+    <div>If people in one treatment group quit more than another, your groups won't be comparable anymore. Plus, your final sample won't magically match the national population. Post-stratification is just a clean way of using census benchmarks to re-weight your data so it actually reflects the broader population.</div>
+  </details>
+
+  <details >
+    <summary >Visual design and formatting</summary>
+    <div>A messy or non-mobile-friendly interface destroys trust and drives up dropouts. Clean formatting, clear text, and intuitive sliders or buttons ensure respondents focus on your questions instead of fighting a clunky layout.</div>
+  </details>
+
+  <details >
+    <summary >Live field monitoring</summary>
+    <div>Never launch your survey and walk away. Keep an eye on your live data and dropout rates in real time so you can catch technical bugs, broken links, or confusing wording before your sample pool is wasted.</div>
+  </details>
+
+  <hr/>
+
+  <p ">Most of these practical challenges, along with concrete solutions and frameworks, are thoroughly discussed in Stefanie Stantcheva’s paper, <em>"How to Run Surveys: A Guide to Creating Your Own Identifying Variation and Revealing the Invisible"</em>. Read through it to make sure your survey design is airtight before you launch!</p>
+</div>
               </details>
 
               <details class="collapse-section">
@@ -452,7 +530,7 @@
                           hypotheses etc.</div>
                   </details>
                   <details>
-                      <summary>Research Method:</summary>
+                      <summary>Research method:</summary>
                       <div> These are some of the available research methods that you could use in your project:
                           <ul>
                               <li>
@@ -495,7 +573,7 @@
                       </div>
                   </details>
                   <details>
-                      <summary>Key References:</summary>
+                      <summary>Key references:</summary>
                       <div>
                           <p>List up to 3 core academic papers that relate to your project. Avoid broad overview books and focus on
                               specific journal articles instead. Your references could include any of the following types:</p>
@@ -593,7 +671,7 @@
                       </details>
 
                       <details>
-                          <summary>Concrete Research Question:</summary>
+                          <summary>Concrete research question:</summary>
                           <div>Formulate one focused question ending with a question mark. Make clear what relationship or effect you intend to investigate and ensure your proposed design can address it.</div>
                       </details>
 
@@ -603,7 +681,7 @@
                       </details>
 
                       <details>
-                          <summary>Short Literature review and Motivation:</summary>
+                          <summary>Short literature review and motivation:</summary>
                           <div>Explain what closely related research has established and how your project builds on it. Identify the specific issue you will investigate and why it matters. Connect the studies to your project rather than listing separate summaries.</div>
                       </details>
 
@@ -613,7 +691,7 @@
                       </details>
 
                       <details>
-                          <summary>Theoretical Model and mechanisms:</summary>
+                          <summary>Theoretical model and mechanisms:</summary>
                           <div>Explain the behavioral or economic process behind your predictions. Describe how it should operate in your setting and connect it to the literature. Naming a bias alone is insufficient; a formal mathematical model is only needed if relevant to your approach.</div>
                       </details>
 
@@ -646,21 +724,23 @@
 
 
                   <h3 id="bt_survey1">Design Proposal and/or Survey</h3>
-                  <!--<p>At this stage, you should have a working prototype of your survey/experiment, ready to be tested. Although it is
-                      referred to as a ‘draft’, your survey should be complete. The idea is that you present your project during the
-                      first presentation, so that you can receive feedback from us and your colleagues. Your experimental project
+                  <p>At this stage, you should have a working prototype of your survey/experiment, ready to be tested. Although it is
+                      referred to as a ‘proposal’, your survey should be ready. Your experimental project
                       and/or survey should be so well prepared and complete that, if we were to tell you it’s fine, you could start
                       collecting data right then and there.</p>
+
+                    <p>Please refer to the section <a href="#survey-section" onclick="document.getElementById('survey-section').open = true;">Surveys and Experiments</a> for more tips and tricks on how to design a survey or an experiment and how to spot common mistakes.</p>
+                    <p>Submit the complete current version of your survey or experiment, showing exactly what participants will see and do: instructions, questions, response options, tasks, and materials in their intended order. Include every treatment and comparison condition. Submit a document, screenshots or an accessible link to your online survey or experiment. Ensure we can view all conditions and branches.</p>
 
                   <div class="callout">
                       <div class="callout-title">💡 Serious Testing Hint</div>
                       <p>The quality of your survey/experiment directly impacts the validity and reliability of your findings. Once
                           data collection starts, it is too late to change your design. Ensure thorough testing beforehand!</p>
-                  </div>-->
-
-                  <div class="todo-box">
-                    Sorry, this section is currently not available.
                   </div>
+
+                  <!--<div class="todo-box">
+                    Sorry, this section is currently not available.
+                  </div>-->
           `,
           "MS": `
                <h2>Master Seminar Project</h2>
@@ -713,8 +793,7 @@
                     <details>
                         <summary>Overall topic:</summary>
                         <div> Briefly explain the topic you are interested in, together with its practical or theoretical relevance.
-                            Why
-                            does this topic matter? Why are you interested in it?</div>
+                            Why does this topic matter? Why are you interested in it?</div>
                     </details>
                     <details>
                         <summary>
@@ -959,13 +1038,18 @@
                       <p><em>At this stage, we expect a detailed plan; completed results and a fully programmed experiment are not required. Clearly distinguish settled decisions from provisional choices. The complete working prototype is due at the subsequent design proposal stage.</em></p>
 
                     <h3 id="ms_survey1">Design proposal</h3>
-                    <!--<div class="todo-box">Include specific requirements for how specific the design proposal should be. survey, data
-                        collection plan, treatments, sample size etc. This is right now listes only as a deadline for own
-                        contribution and not for replication</div>-->
+                     <p>At this stage, you should have a working prototype of your survey/experiment, ready to be tested. Although it is
+                      referred to as a ‘proposal’, your survey should be ready. Your experimental project
+                      and/or survey should be so well prepared and complete that, if we were to tell you it’s fine, you could start
+                      collecting data right then and there.</p>
+
+
+                    <p>Submit the complete current version of your survey or experiment, showing exactly what participants will see and do: instructions, questions, response options, tasks, and materials in their intended order. Include every treatment and comparison condition. Submit a document, screenshots or an accessible link to your online survey or experiment. Ensure we can view all conditions and branches.</p>
+
                       
-                    <div class="todo-box">
+                    <!--<div class="todo-box">
                       Sorry, this section is currently not available.
-                    </div>
+                    </div>-->
 
                 </details>
 
@@ -1156,7 +1240,7 @@ The same outcome can arise through different mechanisms: a reminder might also i
       const docData = DOCUMENTS_DATA["Info Project"];
       let renderedHTML = `
         <h1 class="doc-title">${docData.title}</h1>
-        <div class="subtitle-track">Active Profile: ${activeTrack} Track &bull; Project Details</div>
+        <div class="subtitle-track">Active Profile: ${activeTrack} Track</div>
         ${docData.commonContent}
       `;
 
