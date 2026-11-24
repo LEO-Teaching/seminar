@@ -57,6 +57,14 @@
     }
     .back-hub-btn:hover { color: var(--text); border-color: var(--text-muted); }
 
+    hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid var(--border);
+    margin: 1.5em 0;
+    padding: 0;
+    }
     .doc-content {
       background: var(--card-bg);
       border: 1px solid var(--border);
@@ -131,6 +139,83 @@
     }
     .callout-title { font-weight: 700; color: #93c5fd; margin-bottom: 0.4rem; font-size: 0.95rem; }
     .callout p { margin-bottom: 0; color: #e2e8f0; }
+
+
+    
+    details {
+      background: var(--card-bg);
+      border: 0.5px solid var(--border);
+      border-radius: 2pt;
+      margin-bottom: 0.5rem;
+      transition: border-color 0.2s;
+    }
+
+    details:hover {
+      border-color: #60a5fa;
+      /* highlights the border slightly on hover */
+    }
+
+    summary {
+      cursor: pointer;
+      padding: 0.25rem 0.25rem;
+      font-weight: 600;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      /* removes default browser arrow if you want it cleaner */
+    }
+
+    summary::before {
+      content: "▼";
+      font-size: 0.75rem;
+      color: #93c5fd;
+      transition: transform 0.2s ease;
+      margin-right: 0.5rem;
+    }
+
+    details[open] > summary::before{
+      transform: rotate(180deg); /* Turns the triangle downward when open */
+    }
+
+    details>div {
+      margin-left: 1.5rem;
+      margin-right: 0.5rem;
+      margin-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-muted);
+    }
+
+
+    .collapse-section {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        margin-bottom: 1rem;
+        padding: 0.5rem;
+}
+
+    .collapse-header {
+    cursor: pointer;
+    padding: 0.5rem;
+    user-select: none;
+    }
+
+    /* Optional: removes margins from h3 inside summary so it aligns nicely */
+    .collapse-header h4 {
+    margin: 0;
+    display: inline; 
+    border: none;
+    }
+    .collapse-header h3 {
+    margin: 0;
+    display: inline; 
+    border: none;
+    }
+
+    .collapse-content {
+    padding: 0 0rem 0rem 0rem;
+    }
   </style>
 </head>
 <body>
@@ -163,7 +248,7 @@
         title: "Guideline: Presentations",
         commonContent: `
           <p>Presenting your work, whether it is a draft or your final work, is a crucial part of the academic process. It allows you to communicate your research findings, receive feedback, and engage with your audience.</p>
-          <p>All presentation sessions are considered fundamental parts of your work and you are expected to attend and actively participate in every session of your group. This includes providing constructive feedback to your peers, asking insightful questions, and engaging in discussions.</p>
+          <p>All presentation sessions are considered fundamental parts of your work and you are expected to attend and actively participate in every session. This includes providing constructive feedback to your peers, asking insightful questions, and engaging in discussions.</p>
 
           <div class="callout">
             <div class="callout-title">💡 Learning Opportunity Hint</div>
@@ -174,37 +259,120 @@
           "BT": `
             <h2>Bachelor Thesis Presentations</h2>
             
-            <h3 id="bt_pres1">First Presentation</h3>
-            <p>Your first presentation is an important milestone in your project, where you will receive valuable feedback. We expect your presentation to include:</p>
+            <h3 id="bt_pres1">Midterm presentation</h3>
+            <p>Your first presentation is an important milestone in your project and allows you to receive valuable feedback and practice your research exposure skills. We expect your presentation (max. 10 minutes) to include:</p>
             <ul>
-              <li><strong>Introduction & Motivation:</strong> Related literature, research question, and theoretical hypotheses (approx. 5–7 minutes).</li>
-              <li><strong>Design & Implementation Strategy:</strong> Key measurements, potential limitations, and implementation challenges (approx. 8–10 minutes).</li>
+              <li><strong>Introduction & Motivation:</strong> Motivate your research question, introduce the relevant literature, explain the theoretical / behavioural mechanism and state your main hypotheses  (approx. 3-4 minutes).
+</li>
+              <li><strong>Design & Implementation Strategy:</strong> Design overview, key measurements, potential limitations, and implementation challenges (approx. 6-7 minutes). Note: at this stage we expect a thorough discussion of your actual design with detailed, precise aspects already defined.</li>
             </ul>
-            <p>Individual talk duration is a maximum of 15 minutes, followed by up to 15 minutes for discussion and questions. Active peer participation is required.</p>
+
+            <p>You presentation will be followed by up to 10 minutes of discussion and questions. Active peer participation is required.</p>
+
+            <p>You can use the template for the extended project draft to make sure that you presentation covers the main aspects of a research project.</p>
             
             <div class="callout">
-              <div class="callout-title">Note for Dual Writers (Seminar & Thesis)</div>
+              <div class="callout-title">Note for dual writers (Seminar & Thesis)</div>
               <p>If you are also writing a Bachelor Seminar on the same topic, you will only have to present once. Please refer to the Bachelor Seminar guidelines regarding combined requirements.</p>
             </div>
             
-            <div class="todo-box">Check whether info matches seminar info for students doing both, and confirm time ranges fit next semester's schedule.</div>
+            <!--<div class="todo-box">Check whether info matches seminar info for students doing both, and confirm time ranges fit next semester's schedule.</div> -->
 
             <h3 id="bt_coll">Colloquium</h3>
-            <p>Focus your colloquium on improvements, updates, empirical strategy, and results (roughly 10–12 minutes of your 15-minute time slot):</p>
+
+            <div class="todo-box">
+                    Sorry, this section is currently not available.
+                  </div>
+            
+            <!-- <p>Focus your colloquium on improvements, updates, empirical strategy, and results (roughly 10–12 minutes of your 15-minute time slot):</p>
             <ul>
               <li><strong>Research Question & Final Design:</strong> 2–3 minutes</li>
               <li><strong>Data Elicitation & Empirical Strategy:</strong> 3–4 minutes (hypotheses, sampling approach, statistical tests)</li>
               <li><strong>Empirical / Preliminary Results:</strong> 8–10 minutes (primary focus)</li>
               <li><strong>Open Questions & Conclusion:</strong> 2 minutes</li>
             </ul>
-            <p>Followed by a 15-minute question and interaction round.</p>
+            <p>Followed by a 15-minute question and interaction round.</p> -->
           `,
           "MS": `
-            <h2 id="ms_pres1" >Midterm Presentations</h2>
-             <h3 >Presentation Structure</h3>
+            <h2>Master Seminar Presentations</h2>
+            <details class="collapse-section">
+                    <summary class="collapse-header">
+            <h3 id="ms_pres1" >Midterm presentation (own experimental project)</h3> </summary>
+             
+            <p>Your first presentation is an important milestone in your project and allows you to receive valuable feedback and practice your research exposure skills. We expect your presentation (max. 10 minutes) to include:</p>
+            <ul>
+              <li><strong>Introduction & Motivation:</strong> Motivate your research question, introduce the relevant literature, explain the theoretical / behavioural mechanism and state your main hypotheses  (approx. 3-4 minutes).
+</li>
+              <li><strong>Design & Implementation Strategy:</strong> Design overview, key measurements, potential limitations, and implementation challenges (approx. 6-7 minutes). Note: at this stage we expect a thorough discussion of your actual design with detailed, precise aspects already defined.</li>
+            </ul>
 
-            <h2 id="ms_pres2" >Master Seminar Presentations</h2>
-            <p>Your presentation is a crucial component of your Master Seminar—worth 40% of your final grade. Thorough preparation and active participation in peer discussions are essential.</p>
+            <p>You presentation will be followed by up to 10 minutes of discussion and questions. Active peer participation is required.</p>
+
+            <p>You can use the template for the extended project draft to make sure that you presentation covers the main aspects of a research project.</p>
+            </details>
+
+            <details class="collapse-section">
+                    <summary class="collapse-header">
+            <h3 id="ms_pres1" >Midterm presentation (replication and extension)</h3></summary>
+             
+            <p>Your first presentation is an important milestone in your project and allows you to receive valuable feedback and practice your research exposure skills. We expect your presentation (max. 10 minutes) to include:</p>
+            <ul>
+              <li><strong>Baseline Paper & Replication Progress:</strong>  Research question, main findings, replication scope, and results obtained so far, including discrepancies with the original study (approx. 5-6 minutes).
+
+</li>
+              <li><strong>Extension & Next Steps:</strong> Motivation and research question for your extension, planned analysis or preliminary findings, limitations, and remaining challenges (approx. 4-5 minutes).
+</li>
+            </ul>
+
+            <p>You presentation will be followed by up to 10 minutes of discussion and questions. Active peer participation is required.</p>
+
+            <p>Your analyses need not be complete, but you should demonstrate concrete progress and a feasible plan.</p>
+
+
+            <h4>Aspects you need to take care of</h4>
+<div>Prepare to explain and discuss:
+  <ul>
+    <li><strong>Understanding the baseline:</strong> What does the original paper investigate, and how do its methods support its conclusions? </li>
+<li><strong>Replication scope:</strong> Which tables, figures, or estimates are you reproducing?</li>
+<li><strong>Data preparation:</strong> How have you defined the sample, handled missing values, and constructed the key variables?</li>
+<li><strong>Methods:</strong> Do your specifications, weights, and standard errors match the original analysis, where applicable?</li>
+<li><strong>Results and discrepancies:</strong> How do your results compare with the published findings? What differences remain, and how will you investigate them?</li>
+<li><strong>Extension and contribution:</strong> What additional question are you addressing, and why is it informative?</li>
+<li><strong>Planned analysis:</strong> Which variables, comparisons, or models will answer your extension question? Can the available data support it?</li>
+<li><strong>Limitations and next steps:</strong> What can your analysis establish, what remains uncertain, and what must you complete next? Identify specific questions for feedback.</li>
+</ul>
+</div>
+
+            </details>
+
+
+            <hr>
+            
+            
+            <details class="collapse-section">
+                    <summary class="collapse-header">
+            <h3 id="ms_pres2" >Final presentation (own experimental project)</h3> </summary>
+
+
+            <div class="todo-box">
+                    Sorry, this section is currently not available.
+                  </div>
+
+            </details>
+
+
+            <details class="collapse-section">
+                    <summary class="collapse-header">
+            <h3 id="ms_pres2" >Final presentation (replication and extension)</h3> </summary>
+
+
+            <div class="todo-box">
+                    Sorry, this section is currently not available.
+                  </div>
+
+            </details>
+
+            <!-- <p>Your presentation is a crucial component of your Master Seminar—worth 40% of your final grade. Thorough preparation and active participation in peer discussions are essential.</p>
             
             <div class="todo-box">Include specific requirements for presentation structure, time ranges, and distinctions between data collection vs. replication tracks.</div>
 
@@ -217,13 +385,13 @@
               <li>Preliminary analysis and results (where available)</li>
               <li>Empirical strategy and steps remaining before final submission</li>
             </ul>
-            <p>To your presentation will follow a 15-minute question round.</p>
+            <p>To your presentation will follow a 15-minute question round.</p> -->
           `,
           "BS": `
-            <h2>Bachelor Seminar Presentations</h2>
+            <h2>Bachelor Seminar Presentation</h2>
             <p>Your presentation is worth 40% of your final grade. It is an opportunity to reflect on, improve, and elevate your work beyond your written paper.</p>
 
-            <h3 id="bs_pres">Final Presentation (15 Minutes)</h3>
+            <h3 id="bs_pres">Final presentation</h3>
             <p>Content & structural weights must be strictly observed:</p>
             <ul>
               <li><strong>Introduction & Motivation (approx. 2 min):</strong> Introduce your policy or management question.</li>
@@ -232,9 +400,9 @@
               <li><strong>Proposal Discussion (approx. 3–5 min):</strong> Discuss how your proposed intervention tests the mechanism.</li>
             </ul>
             
-            <p><strong>Dual Writer Note:</strong> If you are also writing a Bachelor Thesis on the same topic, you present only once and receive 5 additional minutes focused on your empirical project design and implementation strategy.</p>
+            <p><strong>Dual writer note:</strong> If you are also writing a Bachelor Thesis on the same topic, you present only once and receive 5 additional minutes focused on your empirical project design and implementation strategy.</p>
             
-            <p><strong>Discussion & Questions:</strong> Followed by a 15-minute question round. Active participation in peer reviews is mandatory.</p>
+            <p><strong>Discussion & Questions:</strong> Followed by a 10-minute question round. Active participation in peer reviews is mandatory.</p>
           `
         }
       }
